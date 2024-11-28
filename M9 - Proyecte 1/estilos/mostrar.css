@@ -1,0 +1,78 @@
+/* Contenedor principal */
+.contenedor {
+    margin-top: 1%;                   /* Margen superior */
+    display: grid;                    /* Diseño en cuadrícula */
+    align-items: center;              /* Centrado vertical del contenido */
+    place-items: center;              /* Centrado horizontal y vertical del contenido */
+    width: 100%;                      /* Ocupa todo el ancho disponible */
+    min-width: 50px;                  /* Ancho mínimo */
+    padding: 5% 5% 5% 5%;             /* Espaciado interno */
+    background-color: #222222;      /* Fondo */
+    border: 2px solid #666666;      /* Borde */
+    font-weight: bold;                /* Texto en negrita */
+    font-size: 24px;                  /* Tamaño del texto */
+    color: white;                   /* Color del texto */
+}
+
+/* Lista de alquileres */
+.lista-alquileres {
+    margin: 20px auto;                /* Márgenes */
+    width: 100%;                      /* Ocupa todo el ancho */
+}
+
+/* Elemento individual de la lista de alquileres */
+.alquiler {
+    border: 1px solid #a1a1a1;      /* Borde */
+    color: #b3b3b3;                 /* Color del texto */
+    border-radius: 5px;               /* Bordes redondeados */
+    padding: 15px;                    /* Espaciado interno */
+    margin-bottom: 10px;              /* Margen inferior */
+    background-color: #f9f9f900;    /* Fondo */
+    min-width: 100px;                 /* Ancho mínimo */
+    width: 100%;                      /* Ocupa todo el ancho disponible */
+}
+
+/* Título de cada alquiler */
+.alquiler h2 {
+    color: #0056b3;                 /* Color del texto */
+    font-size: 24px;                  /* Tamaño del texto */
+    text-align: center;               /* Alineación centrada */
+}
+
+/* Texto para la ausencia de alquileres */
+.sin-alquiler {
+    font-size: 22px;                  /* Tamaño del texto */
+    text-align: center;               /* Alineación centrada */
+    color: #b3b3b3;                 /* Color del texto */
+    padding: 1%;                      /* Espaciado interno */
+    font-weight: bold;                /* Texto en negrita */
+    min-width: 50px;                  /* Ancho mínimo */
+}
+
+/* Botones principales */
+.botones {
+    display: block;                         /* Mostrar como bloque */
+    padding: 5%;                            /* Espaciado interno */
+    background-color: #2d2d30;            /* Fondo */
+    color: white;                         /* Color del texto */
+    align-items: center;                    /* Centrado vertical */
+    text-align: center;                     /* Texto centrado */
+    text-decoration: none;                  /* Sin subrayado */
+    border-radius: 5px;                     /* Bordes redondeados */
+    font-size: 20px;                        /* Tamaño del texto */
+    font-weight: bold;                      /* Texto en negrita */
+    transition: background-color 0.3s ease; /* Transición suave al cambiar de color */
+    width: 100%;                            /* Ocupa todo el ancho */
+    height: auto;                           /* Altura ajustable automáticamente */
+}
+
+/* Enlaces dentro de los botones */
+.botones a {
+    align-self: auto;                 /* Alineación automática */
+    width: 20%;                       /* Ancho del enlace */
+}
+
+/* Efecto en los botones */
+.botones:hover {
+    background-color: #0056b3;        /* Color de fondo al pasar el ratón */
+}

@@ -1,0 +1,54 @@
+/* Contenedor principal de contactos */
+.gridcontactos {
+    margin-top: auto;                   /* Margen superior automático */
+    display: grid;                      /* Diseño de cuadrícula */
+    grid-template-columns: 1fr 1fr;     /* Dos columnas iguales */
+    gap: 10%;                           /* Espacio entre recuadros */
+    padding: 3%;                        /* Espaciado interno */
+    width: 100%;                        /* Todo el ancho */
+}
+
+/* Títulos de las secciones de contacto */
+.gridcontactos h2 {
+    font-size: 30px;                    /* Tamaño del texto */
+    color: #1d64b4;                   /* Color del texto */
+    margin: 2%;                         /* Margen */
+    text-align: center;                 /* Texto centrado */
+}
+
+/* Recuadros de cada sección */
+.gridcontactos div {
+    background-color: #363636;          /* Fondo del recuadro */
+    border: 1px solid #ddd;             /* Borde del recuadro */
+}
+
+/* Contenedor de cada contacto */
+.contacto {
+    margin: 0;                          /* Sin márgenes */
+    display: grid;                      /* Diseño basado en cuadrícula */
+    grid-template-columns: 40% 60%;     /* Dos columnas: imagen y texto */
+    gap: 0;                             /* Sin espacio entre columnas */
+    width: 100%;                        /* Todo el ancho */
+    padding: 0% 5% 5% 5%;               /* Espaciado interno */
+    align-items: center;                /* Centrado vertical del contenido */
+}
+
+/* Texto dentro de cada contacto */
+.contacto div {
+    border: 0px;                        /* Sin bordes */
+    margin: 5%;                         /* Márgenes internos */
+    color: #ddd;                      /* Color del texto */
+    font-size: 20px;                    /* Tamaño del texto */
+    font-weight: bold;                  /* Texto en negrita */
+}
+
+/* Párrafos dentro de los recuadros de contacto */
+.contacto div p {
+    padding: 1%;                        /* Espaciado interno */
+}
+
+/* Imágenes dentro de cada contacto */
+.contacto img {
+    width: 100%;                        /* Ancho completo */
+    height: auto;                       /* Altura automática*/
+}

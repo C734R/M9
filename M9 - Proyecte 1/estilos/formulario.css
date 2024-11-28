@@ -1,0 +1,47 @@
+/* Estilo general para el formulario */
+.formulario {
+    padding: 1% 10% 1% 10%;         /* Espaciado interno respecto al borde */
+    background-color: #222222;    /* Color de fondo */
+    border: 2px solid #666666;    /* Borde sólido */
+    font-weight: bold;              /* Texto en negrita */
+    font-size: 24px;                /* Tamaño de la fuente del texto*/
+    color: white;                 /* Color del texto */
+}
+
+/* Estilo para los párrafos dentro del formulario */
+.formulario p {
+    padding-bottom: 1%;             /* Espaciado interno respecto al borde */
+    text-align: center;             /* Alinear el texto al centro */
+}
+
+/* Estilo para los campos de entrada dentro del formulario */
+.formulario input {
+    width: 20%;                     /* Ancho del campo de entrada */
+    height: auto;                   /* Altura automática */
+    font-size: 24px;                /* Tamaño de la fuente */
+}
+
+/* Estilo para los divs dentro del formulario */
+.formulario div {
+    display: grid;                  /* Diseño tipo cuadrícula */
+    place-items: center;            /* Centrar el contenido */
+}
+
+/* Estilo para los botones dentro del formulario */
+.formulario button {
+    width: 20%;                         /* Ancho del botón */
+    padding: 1%;                        /* Espaciado interno */
+    height: auto;                       /* Altura automática */
+    font-size: 20px;                    /* Tamaño de la fuente */
+    font-weight: bold;                  /* Texto en negrita */
+    background-color: #555555;        /* Color de fondo */
+    color: white;                     /* Color del texto */
+    text-align: center;                 /* Alineación centrada del texto */
+    border-radius: 5px;                 /* Bordes redondeados de 5px */
+    transition: background-color 0.3s ease; /* Efecto de transición suave */
+}
+
+/* Estilo para los botones al pasar el cursor */
+.formulario button:hover {
+    background-color: #0056b3;      /* Cambia el color de fondo a azul al pasar el cursor */
+}
