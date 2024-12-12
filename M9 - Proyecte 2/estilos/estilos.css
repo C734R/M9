@@ -1,0 +1,78 @@
+/* Configuración general para todos los elementos */
+* {
+    margin: 0;                          /* Sin márgenes */
+    padding: 0;                         /* Sin espaciado interno */
+    box-sizing: border-box;             /* Dimensiones incluyen bordes y relleno */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente predeterminada */
+}
+
+/* Encabezado fijo */
+header {
+    margin: 0;                                              /* Sin márgenes */
+    position: fixed;                                        /* Fijo en la parte superior */
+    background: radial-gradient(#0a0a0a, #182744);      /* Fondo con degradado radial */
+    color: white;                                         /* Color del texto */
+    padding: 0;                                             /* Sin espaciado interno */
+    z-index: 1000;                                          /* Prioridad de aparición máxima */
+    width: 100%;                                            /* Ocupa todo el ancho */
+    border-bottom: 2px solid #666666;                     /* Línea inferior del encabezado */
+}
+
+/* Contenedor basado en cuadrícula para elementos */
+.gridobjetos {
+    margin: 0px;                        /* Sin márgenes */
+    display: grid;                      /* Diseño basado en cuadrícula */
+    place-items: center;                /* Centra los elementos */
+    text-align: center;                 /* Texto centrado */
+}
+
+/* Imagen de portada */
+.imgportada {
+    max-width: 60%;                     /* Ancho máximo */
+    height: auto;                       /* Altura automática */
+    padding: 1%;                        /* Espaciado interno */
+}
+
+/* Títulos secundarios dentro del grid */
+.gridobjetos h3 {
+    color: #b0b0b0;                   /* Color del texto */
+    font-size: 28px;                    /* Tamaño del texto */
+}
+
+/* Párrafos dentro del grid */
+.gridobjetos p {
+    padding: 1%;                        /* Espaciado interno */
+    font-size: 20px;                    /* Tamaño del texto */
+}
+
+/* Título principal */
+h1 {
+    font-size: 42px;                    /* Tamaño del texto */
+    color: #2788e4;                   /* Color del texto */
+    text-align: center;                 /* Texto centrado */
+    padding: 1%;                        /* Espaciado interno */
+}
+
+/* Títulos principales dentro del grid */
+.gridobjetos h2 {
+    font-size: 32px;                    /* Tamaño del texto */
+    color: #ebebeb;                   /* Color del texto */
+    padding: 1%;                        /* Espaciado interno */
+}
+
+/* Contenedor principal */
+main {
+    margin: 0;                          /* Sin márgenes */
+    padding-top: 15%;                   /* Espaciado superior */
+    padding: auto;                      /* Ajuste automático del espaciado */
+}
+
+/* Fondo del cuerpo */
+body {
+    background: repeating-radial-gradient(#1d1d1d, #070707, #1d1d1d, #070707); /* Fondo repetitivo con degradado radial */
+}
+
+/* Títulos secundarios globales */
+h3 {
+    color: #666666;                     /* Color del texto */
+}

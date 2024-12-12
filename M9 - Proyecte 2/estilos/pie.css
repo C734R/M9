@@ -1,0 +1,54 @@
+/* Margen superior */
+footer {
+    margin-top: 5%;                    /* Espaciado superior */
+}
+
+/* Contenedor principal */
+.contenedor-pie {
+    padding: 1%;                        /* Espaciado interno */
+    background-color: #222222;        /* Fondo */
+    border-top: 2px solid #666666;    /* Línea superior */
+    display: grid;                      /* Diseño basado en cuadrícula */
+    grid-template-columns: 50% 50%;     /* Dos columnas iguales */
+    margin-bottom: 0;                   /* Sin margen inferior */
+}
+
+/* Sección de contacto */
+.contacto-pie {
+    padding: 1%;                        /* Espaciado interno */
+    color: #0056b3;                   /* Color del texto */
+    width: 100%;                        /* Ocupa todo el ancho */
+    height: auto;                       /* Altura ajustable automáticamente */
+}
+
+/* Sección de redes sociales */
+.redes-pie {
+    padding: 1%;                       /* Espaciado interno */
+    width: 100%;                       /* Ocupa todo el ancho */
+    height: auto;                      /* Altura ajustable automáticamente */
+}
+
+/* Lista de redes sociales */
+.redes-pie ul {
+    list-style-type: none;             /* Elimina puntos de la lista */
+}
+
+/* Enlaces de redes sociales */
+.redes-pie ul li a {
+    color: #666666;                    /* Color del texto */
+}
+
+/* Efecto en los enlaces de redes sociales */
+.redes-pie ul li a:hover {
+    color: #0056b3;                    /* Color del texto al pasar el ratón */
+}
+
+/* Sección de derechos de autor */
+.derechos-pie {
+    background-color: #666666;       /* Color de fondo */
+    width: 100%;                       /* Ocupa todo el ancho */
+    height: auto;                      /* Altura ajustable automáticamente */
+    display: flex;                     /* Diseño flexible */
+    align-items: center;               /* Centrado vertical de los objetos */
+    justify-content: center;           /* Centrado horizontal del contenido */
+}

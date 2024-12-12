@@ -1,0 +1,83 @@
+/* Diseño de columnas: 20% - 60% - 20% */
+.columnas-20-60-20 {
+    margin: 0;                          /* Sin márgenes */
+    display: grid;                      /* Diseño de cuadrícula */
+    grid-template-columns: 20% 60% 20%; /* Tres columnas proporcionales */
+    gap: 0;                             /* Espacio entre columnas */
+    width: 100%;                        /* Proporción de ancho */
+    padding: 1%;                        /* Espaciado interno */
+}
+
+/* Columna del 20% */
+.columna-20 {
+    width: 50%;                         /* Ancho del contenido */
+    display: flex;                      /* Modelo de caja flexible */
+    align-items: center;                /* Centra verticalmente los objetos */
+    justify-content: center;            /* Centra horizontalmente el contenido */
+}
+
+/* Imágenes en la columna del 20% */
+.columna-20 img {
+    max-width: 100%;                    /* Ancho máximo */
+    height: auto;                       /* Altura proporcional al ancho */
+}
+
+/* Columna del 60% */
+.columna-60 {
+    align-items: center;                /* Centrado vertical de objetos */
+    width: 100%;                        /* Proporción de ancho */
+    height: 100%;                       /* Proporción de altura */
+}
+
+/* Estilo del título en la cabecera */
+.titulocabecera {
+    align-items: center;                /* Centrado de objetos */
+    text-align: center;                 /* Centrado de texto */
+}
+
+/* Estilo para los títulos H1 en la cabecera */
+.titulocabecera h1 {
+    font-size: 32px;                    /* Tamaño de la fuente */
+    padding: 10px;                      /* Espaciado interno */
+}
+
+/* Estilo para los títulos H2 en la cabecera */
+.titulocabecera h2 {
+    font-size: 24px;                    /* Tamaño de la fuente */
+    color: #b0b0b0;                   /* Color  */
+}
+
+/* Navegador */
+.navegador {
+    align-items: center;                /* Centrado vertical */
+    text-align: center;                 /* Centrado horizontal */
+    margin: 2% 2%;                      /* Márgenes */
+}
+
+/* Estilo para las listas de navegación dentro del header */
+header nav ul {
+    list-style-type: none;              /* Elimina los puntos de la lista */
+    margin: 0;                          /* Sin márgenes */
+    padding: 0;                         /* Sin espaciado interno */
+    display: flex;                      /* Diseño flexible */
+    align-items: center;                /* Centrado vertical */
+    justify-content: center;            /* Centrado horizontal */
+}
+
+/* Elementos de la lista de navegación */
+header nav ul li {
+    margin-left: 10px;                   /* Espaciado a la izquierda */
+    margin-right: 10px;                  /* Espaciado a la derecha */
+}
+
+/* Enlaces dentro de la navegación */
+header nav ul li a {
+    color: white;                      /* Color del texto */
+    text-decoration: none;               /* Sin subrayado */
+    font-weight: bold;                   /* Texto en negrita */
+}
+
+/* Efecto en los enlaces */
+header nav ul li a:hover {
+    text-decoration: underline;           /* Subrayado al pasar el ratón */
+}
