@@ -4,17 +4,24 @@
     global $conexion;
     $conexion = $c->conexion();
 
-    function select($conexion){
-        $sql = "SELECT * FROM animales_favoritos";
+    function select($conexion, $tabla, $campos, $condicion){
+        if($condicion =! "") "WHERE " . $condicion;
+        $sql = "SELECT $campos FROM $tabla $condicion";
         return $conexion->query($sql);
     }
     
-    function insert($conexion){
-        $sql = "INSERT INTO  ";
+    function insert($conexion, $tabla, $campos, $valores){
+        $sql = "INSERT INTO $tabla ($campos) VALUES ($valores)";
         return $conexion->query($sql);
     }
 
-    function delete($conexion, $id){
-        $sql = "DELETE FROM users WHERE name = $id";
+    function update($conexion, $tabla, $campo, $nuevoDato, $condicion){
+        $sql = "UPDATE $tabla SET $campo = $nuevoDato WHERE $condicion";
         return $conexion->query($sql);
     }
+
+    function delete($conexion, $tabla, $condicion){
+        $sql = "DELETE FROM $tabla WHERE $condicion";
+        return $conexion->query($sql);
+    }
+?>
