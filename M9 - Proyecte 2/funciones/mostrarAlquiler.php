@@ -1,3 +1,7 @@
+<?php
+    require_once 'global.php';
+?>
+
 <div class="lista-alquileres">
     <!-- Si la lista tiene registros -->
     <?php if (!empty($_SESSION['alquileres'])): ?>

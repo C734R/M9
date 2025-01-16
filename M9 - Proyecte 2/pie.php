@@ -1,5 +1,9 @@
+<?php
+    require_once 'global.php';
+?>
+
 <!-- Estilo para el pie de página -->
-<link rel="stylesheet" href="./estilos/pie.css">
+<link rel="stylesheet" href="<?=URL_Proyecto?>estilos/pie.css">
 <footer>
     <!-- Contenedor principal del pie de página -->
     <section class="contenedor-pie">

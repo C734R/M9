@@ -1,7 +1,12 @@
 <?php
+    require_once 'global.php';
+?>
+<?php
     // Iniciar sesión
-    session_start();
-
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+    
     // Si no se ha registrado modelo, volver a la página de vehículos.
     if (!isset($_GET['modelo'])) {
         header("Refresh: 5; url=productos.php");
@@ -14,12 +19,12 @@
 ?>
 
 <html lang="es">
-<link rel="shortcut icon" href="img/logo.ico" />
+<link rel="shortcut icon" href="<?=URL_Proyecto?>img/logo.ico" />
 <head>
     <meta charset="UTF-8">
     <title>Cesta de compra - Underground Workshop</title>
-    <link rel="stylesheet" href="./estilos/estilos.css">
-    <link rel="stylesheet" href="./estilos/formulario.css">
+    <link rel="stylesheet" href="<?=URL_Proyecto?>estilos/estilos.css">
+    <link rel="stylesheet" href="<?=URL_Proyecto?>estilos/formulario.css">
 </head>
 <!-- Cabecera insertada -->
 <?php include('cabecera.php'); ?>

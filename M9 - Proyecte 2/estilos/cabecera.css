@@ -8,8 +8,9 @@
     padding: 1%;                        /* Espaciado interno */
 }
 
-/* Columna del 20% */
-.columna-20 {
+/* Columna del 20% izq */
+.columna-20-izq {
+    margin-left: 10%;
     width: 50%;                         /* Ancho del contenido */
     display: flex;                      /* Modelo de caja flexible */
     align-items: center;                /* Centra verticalmente los objetos */
@@ -17,7 +18,7 @@
 }
 
 /* Imágenes en la columna del 20% */
-.columna-20 img {
+.columna-20-izq img {
     max-width: 100%;                    /* Ancho máximo */
     height: auto;                       /* Altura proporcional al ancho */
 }
@@ -79,5 +80,32 @@ header nav ul li a {
 
 /* Efecto en los enlaces */
 header nav ul li a:hover {
+    text-decoration: underline;           /* Subrayado al pasar el ratón */
+}
+
+/* Columna del 20% der*/
+.columna-20-der {
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 100%;                         /* Ancho del contenido */
+    display: flex;                      /* Modelo de caja flexible */
+    align-items: center;                /* Centra verticalmente los objetos */
+    justify-content: center;            /* Centra horizontalmente el contenido */
+}
+
+.botones-sesion {
+    margin-left: 10px;                   /* Espaciado a la izquierda */
+    margin-right: 10px;                  /* Espaciado a la derecha */
+}
+
+.botones-sesion a{
+    align-items: center;                /* Centrado vertical */
+    justify-content: center;            /* Centrado horizontal */
+    color: white;                      /* Color del texto */
+    text-decoration: none;               /* Sin subrayado */
+    font-weight: bold;                   /* Texto en negrita */
+}
+
+.botones-sesion a:hover {
     text-decoration: underline;           /* Subrayado al pasar el ratón */
 }

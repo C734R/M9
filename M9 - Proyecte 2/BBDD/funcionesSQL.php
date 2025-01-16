@@ -5,8 +5,8 @@
     $conexion = $c->conexion();
 
     function select($conexion, $tabla, $campos, $condicion){
-        if($condicion =! "") "WHERE " . $condicion;
-        $sql = "SELECT $campos FROM $tabla $condicion";
+        $sql = "SELECT $campos FROM $tabla";
+        if(!empty($condicion)) $sql.=" WHERE $condicion";
         return $conexion->query($sql);
     }
     

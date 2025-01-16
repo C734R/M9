@@ -1,10 +1,14 @@
+<?php
+    require_once 'global.php';
+?>
+
 <html lang="es">
-<link rel="shortcut icon" href="img/logo.ico" />
+<link rel="shortcut icon" href="<?=URL_Proyecto?>img/logo.ico" />
 <head>
     <meta charset="UTF-8">
     <title>Contacto - Underground Workshop</title>
-    <link rel="stylesheet" href="./estilos/estilos.css">
-    <link rel="stylesheet" href="./estilos/contacto.css">
+    <link rel="stylesheet" href="<?=URL_Proyecto?>estilos/estilos.css">
+    <link rel="stylesheet" href="<?=URL_Proyecto?>estilos/contacto.css">
 </head>
 <!-- Cabecera insertada -->
 <?php include('cabecera.php'); ?>
@@ -18,7 +22,7 @@
             <div>
                 <h2>Sede de Barcelona</h2>
                 <section class="contacto">
-                    <img src="img/barcelona.webp" alt="Taller Barcelona">
+                    <img src="<?=URL_Proyecto?>img/barcelona.webp" alt="Taller Barcelona">
                     <div>
                         <p>Dirección: </p>
                         <p>Avenida Diagonal, 640, 08017 Barcelona</p>
@@ -32,7 +36,7 @@
             <div>
                 <h2>Sede de Montcada</h2>
                 <section class="contacto">
-                    <img src="img/montcada.webp" alt="Taller Montcada">
+                    <img src="<?=URL_Proyecto?>img/montcada.webp" alt="Taller Montcada">
                     <div>
                         <p>Dirección: </p>
                         <p>Carrer Major, 45, 08110 Montcada i Reixac</p>
@@ -46,7 +50,7 @@
             <div>
                 <h2>Sede de Madrid</h2>
                 <section class="contacto">
-                    <img src="img/madrid.webp" alt="Taller Madrid">
+                    <img src="<?=URL_Proyecto?>img/madrid.webp" alt="Taller Madrid">
                     <div>
                         <p>Dirección: </p>
                         <p>Calle Gran Vía, 28, 28013 Madrid</p>
@@ -60,7 +64,7 @@
             <div>
                 <h2>Sede de Sevilla</h2>
                 <section class="contacto">
-                    <img src="img/sevilla.webp" alt="Taller Sevilla">
+                    <img src="<?=URL_Proyecto?>img/sevilla.webp" alt="Taller Sevilla">
                     <div>
                         <p>Dirección: </p>
                         <p>Avenida de la Constitución, 12, 41004 Sevilla</p>

@@ -1,6 +1,12 @@
 <?php
+    require_once '../global.php';
+?>
+
+<?php
 // Iniciar sesión
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 // Si se reciben los datos del formulario
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -13,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($dias_alquiler < 1 || empty($nombre_piloto)) {
         // Vuelve al formulario con un mensaje de error
         $_SESSION['error'] = "Por favor, introduzca un número de días válido y un nombre.";
-        header("Location: formAlquiler.php?modelo=" . urlencode($modelo));
+        header("Location: <?=URL_Proyecto?>formAlquiler.php?modelo=" . urlencode($modelo));
         exit();
     }
 
@@ -31,12 +37,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ];
 
     // Redirige a la página de alquileres registrados
-    header("Location: ../alquilados.php");
+    header("Location: <?=URL_Proyecto?>alquilados.php");
     exit();
 } 
 // Si no se accede mediante POST vamos a lista alquileres
 else {
     echo "Acceso no autorizado.";
-    header("Refresh: 5; url=../alquilados.php");
+    header("Refresh: 5; url=<?=URL_Proyecto?>alquilados.php");
     exit();
 }

@@ -1,10 +1,10 @@
 <?php 
-
+	// Clase con diferentes funciones para conexión BBDD
 	class Conectar{
 		private $servidor="127.0.0.1:3306";
 		private $usuario="root";
 		private $password="1234";
-		private $bd="p1";
+		private $bd="m9uf1";
 
 		//MYSQLI con funciones
 		public function /*conexion*/ conexionMysqlIFunciones(){

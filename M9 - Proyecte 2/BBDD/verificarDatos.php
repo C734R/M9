@@ -25,5 +25,5 @@
         header("location: main.php");
     }
     echo "Usuario inexistente.";
-    header("location: main.php");
+    header("Location: main.php");
 ?>

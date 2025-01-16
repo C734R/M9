@@ -1,7 +1,11 @@
 <?php
+    require_once 'global.php';
+?>
+<?php
 // Iniciar sesión
-session_start();
-
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 // Comprobar acceso mediante método POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Verifica si se solicita eliminar todos los registros
@@ -17,10 +21,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // Si no se accede mediante post
 else {
     echo "Acceso no autorizado.";
-    header("Refresh: 5; url=../alquilados.php");
+    header("Refresh: 5; url=<?=URL_Proyecto?>alquilados.php");
     exit();
 }
 // Volver finalmente a la lista de alquileres
 echo "Volviendo a la lista de alquileres.";
-header("Refresh: 5; url=../alquilados.php");
+header("Refresh: 5; url=<?=URL_Proyecto?>alquilados.php");
 ?>

@@ -1,17 +1,22 @@
 <?php
+    require_once 'global.php';
+?>
+<?php
     // Iniciar sesión y eliminar modelo si existe
-    session_start();
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
     if (isset($_SESSION['modelo'])) {
         unset($_SESSION['modelo']);
     }
 ?>
 <html lang="es">
-<link rel="shortcut icon" href="img/logo.ico" />
+<link rel="shortcut icon" href="<?=URL_Proyecto?>img/logo.ico" />
 <head>
     <meta charset="UTF-8">
     <title>Productos - Underground Workshop</title>
-    <link rel="stylesheet" href="./estilos/estilos.css">
-    <link rel="stylesheet" href="./estilos/productos.css">
+    <link rel="stylesheet" href="<?=URL_Proyecto?>estilos/estilos.css">
+    <link rel="stylesheet" href="<?=URL_Proyecto?>estilos/productos.css">
 </head>
 <!-- Insertar cabecera -->
 <?php include('cabecera.php'); ?>
@@ -23,7 +28,7 @@
         <!-- Información del Honda S2000 -->
         <div class="titulocoche">HONDA S2000</div>
         <div class="coche">
-            <img class="coche-img" src="img/honda-S2000.avif" alt="S2000">
+            <img class="coche-img" src="<?=URL_Proyecto?>img/honda-S2000.avif" alt="S2000">
             <div class="coche-info">
                 <p>Modificado con Stage 3, este S2000 redefine el concepto de conducción extrema en la ciudad, alcanzando altas revoluciones con máxima estabilidad.</p>
                 <ul class="caracteristicas">
@@ -35,7 +40,7 @@
                 </ul>
             </div>
             <div>
-                <a href="formAlquiler.php?modelo=Honda S2000" class="boton-alquiler">¡¡ME LO QUEDO!!</a>
+                <a href="<?=URL_Proyecto?>formAlquiler.php?modelo=Honda S2000" class="boton-alquiler">¡¡ME LO QUEDO!!</a>
             </div>
         </div>
 
@@ -54,14 +59,14 @@
                 </ul>
             </div>
             <div>
-                <a href="formAlquiler.php?modelo=BMW M3 E30" class="boton-alquiler">¡¡ME LO QUEDO!!</a>
+                <a href="<?=URL_Proyecto?>formAlquiler.php?modelo=BMW M3 E30" class="boton-alquiler">¡¡ME LO QUEDO!!</a>
             </div>
         </div>
 
         <!-- Información del Mercedes Benz W201 AMG 190E DCM -->
         <div class="titulocoche">Mercedes Benz W201 AMG 190E DCM</div>
         <div class="coche">
-            <img class="coche-img" src="img/mb-w201-amg-190e-dmc.webp" alt="AMG W201 E190">
+            <img class="coche-img" src="<?=URL_Proyecto?>img/mb-w201-amg-190e-dmc.webp" alt="AMG W201 E190">
             <div class="coche-info">
                 <p>Preparado con un Stage 3 profesional, este W201 AMG combina un diseño icónico con un rendimiento brutal, ideal para quienes buscan lujo y adrenalina.</p>
                 <ul class="caracteristicas">
@@ -73,14 +78,14 @@
                 </ul>
             </div>
             <div>
-                <a href="formAlquiler.php?modelo=Mercedes Benz W201 AMG 190E DCM" class="boton-alquiler">¡¡ME LO QUEDO!!</a>
+                <a href="<?=URL_Proyecto?>formAlquiler.php?modelo=Mercedes Benz W201 AMG 190E DCM" class="boton-alquiler">¡¡ME LO QUEDO!!</a>
             </div>
         </div>
 
         <!-- Información del Mitsubishi Lancer EVO 9 -->
         <div class="titulocoche">Mitsubishi Lancer EVO 9</div>
         <div class="coche">
-            <img class="coche-img" src="img/mitsubishi-lancer-evo-9-3646.jpg" alt="EVO 9">
+            <img class="coche-img" src="<?=URL_Proyecto?>img/mitsubishi-lancer-evo-9-3646.jpg" alt="EVO 9">
             <div class="coche-info">
                 <p>Rediseñado para carreras urbanas, este EVO 9 cuenta con preparación Stage 3, ideal para dominar las calles con aceleraciones explosivas y tracción perfecta.</p>
                 <ul class="caracteristicas">
@@ -92,14 +97,14 @@
                 </ul>
             </div>
             <div>
-                <a href="formAlquiler.php?modelo=Mitsubishi Lancer EVO 9" class="boton-alquiler">¡¡ME LO QUEDO!!</a>
+                <a href="<?=URL_Proyecto?>formAlquiler.php?modelo=Mitsubishi Lancer EVO 9" class="boton-alquiler">¡¡ME LO QUEDO!!</a>
             </div>
         </div>
 
         <!-- Información del SEAT Ibiza Cupra 6L -->
         <div class="titulocoche">SEAT Ibiza Cupra 6L</div>
         <div class="coche">
-            <img class="coche-img" src="img/ibiza-amarillo.jpg" alt="Ibiza Cupra">
+            <img class="coche-img" src="<?=URL_Proyecto?>img/ibiza-amarillo.jpg" alt="Ibiza Cupra">
             <div class="coche-info">
                 <p>Transformado con un Stage 3 completo, este Ibiza Cupra es una bala urbana que combina ligereza, potencia y control absoluto.</p>
                 <ul class="caracteristicas">
@@ -111,7 +116,7 @@
                 </ul>
             </div>
             <div>
-                <a href="formAlquiler.php?modelo=SEAT Ibiza Cupra 6L" class="boton-alquiler">¡¡ME LO QUEDO!!</a>
+                <a href="<?=URL_Proyecto?>formAlquiler.php?modelo=SEAT Ibiza Cupra 6L" class="boton-alquiler">¡¡ME LO QUEDO!!</a>
             </div>
         </div>
     </main>

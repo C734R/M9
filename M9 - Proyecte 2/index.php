@@ -1,3 +1,6 @@
+<?php
+    require_once 'global.php';
+?>
 <html lang="es">
 <link rel="shortcut icon" href="img/logo.ico" />
 <head>
