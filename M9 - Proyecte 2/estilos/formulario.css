@@ -45,3 +45,16 @@
 .formulario button:hover {
     background-color: #0056b3;      /* Cambia el color de fondo a azul al pasar el cursor */
 }
+
+
+input {
+    text-align: center;
+}
+
+label {
+    margin: 1%;
+}
+
+button {
+    margin: 1%;
+}

@@ -5,6 +5,21 @@ require_once '../global.php';
 require_once '../BBDD/funcionesSQL.php';
 ?>
 
+<!-- Comprobar sesión iniciada y tratar datos -->
+<?php
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+    
+    // Guardar mensajes de la sesión de forma local si tienen contenido
+    $exito = isset($_SESSION['exito']) ? $_SESSION['exito'] : "";
+    $error = isset($_SESSION['error']) ? $_SESSION['error'] : "";
+    
+    // Vaciar datos de la sesion
+    unset($_SESSION['exito']);
+    unset($_SESSION['error']);
+?>
+
 <!-- Página Inicio Sesión -->
 <html lang="es">
 <head>
@@ -20,7 +35,7 @@ require_once '../BBDD/funcionesSQL.php';
             INICIAR SESIÓN
         </h1>
         <div class="formulario">
-            <form action="" method="POST">
+            <form action="<?=URL_Proyecto?>sesion/funciones_sesion/iniciar.php" method="POST">
                 <div>
                     <label for="usuario">Usuario:</label>
                     <input type="text" id="usuario" name="usuario" required>
@@ -37,52 +52,15 @@ require_once '../BBDD/funcionesSQL.php';
             </form>
             <!-- Si registramos algún error en el inicio de sesión, lo mostramos en rojo -->
             <?php if (!empty($error)) echo "<p style='color:red;'>$error</p>"; ?>
+            <!-- Si los datos son correctos e iniciamos sesión -->
+            <?php if (!empty($exito)) {
+                echo "<p style='color:green;'>$exito</p>"; 
+                header('Location: '.URL_Proyecto.'index.php');
+            } 
+            ?>
         </div>
     </main>
     <?php include('../pie.php'); ?>
 </body>
 </html>
 
-<!-- Código funcional insertado -->
-<?php
-// Checkear si hay sesion abierta
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-
-// Si la solicitud HTTP es tipo 'POST'
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $usuario = $_POST['usuario'];
-    $password = $_POST['password'];
-
-    // Buscar datos de usuario introducido
-    $resultado = select($conexion, 'usuarios', '*', "usuario = '$usuario'");
-
-    // Si devuelve resultado (una fila)
-    if ($resultado->num_rows === 1) {
-        // Formateamos datos en array de datos
-        $datos = $resultado->fetch_assoc();
-        // Si el dato contraseña coincide con la introducida
-        if (password_verify($password, $datos['password'])) {
-            // Registramos los datos de la BBDD en la sesión del navegador
-            $_SESSION['usuario'] = [
-                'usuario' => $datos['usuario'],
-                'nombre' => $datos['nombre'],
-                'apellido1' => $datos['apellido1'],
-                'apellido2' => $datos['apellido2']
-            ];
-            // Volvemos a index.php
-            header('Location: '.URL_Proyecto.'index.php');
-            exit;
-        } 
-        // Si la contraseña no coincide
-        else {
-            $error = "Contraseña incorrecta.";
-        }
-    }
-    // Si no devuelve resultado
-    else {
-        $error = "Usuario no encontrado.";
-    }
-}
-?>

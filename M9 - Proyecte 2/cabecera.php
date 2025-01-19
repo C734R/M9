@@ -56,7 +56,7 @@
                     <p>Hola,</p>
                     <p><?= "$nombre, $apellido1 $apellido2" ?></p>
                     <div><a href="<?=URL_Proyecto?>sesion/areapersonal.php">Área personal</a></div>
-                    <div><a href="<?=URL_Proyecto?>sesion/cerrarsesion.php">Cerrar sesión</a></div>
+                    <div><a href="<?=URL_Proyecto?>sesion/funciones_sesion/cerrarsesion.php">Cerrar sesión</a></div>
                 </div>
                 <?php
             } 

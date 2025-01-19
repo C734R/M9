@@ -1,6 +1,6 @@
 <?php
 // Cargar archivos necesarios
-require_once '../global.php';
+require_once '../../global.php';
 
 // Iniciar la sesión si no está ya iniciada
 if (session_status() === PHP_SESSION_NONE) {
@@ -16,6 +16,6 @@ if (isset($_SESSION['usuario'])) {
 }
 
 // Redirigir al usuario a la página de inicio con un mensaje de cierre
-header('Location: ../index.php');
+header('Location: '.URL_Proyecto.'index.php');
 exit;
 ?>

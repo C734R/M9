@@ -1,45 +1,25 @@
+<!-- Ficheros necesarios -->
 <?php
-// Cargar ficheros necesarios
-require_once '../global.php';
-require_once '../BBDD/funcionesSQL.php';
-
-// Checkear si hay sesion abierta
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-
-// Si la solicitud HTTP es tipo 'POST'
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $usuario = $_POST['usuario'];
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-    $nombre = $_POST['nombre'];
-    $apellido1 = $_POST['apellido1'];
-    $apellido2 = $_POST['apellido2'];
-
-    // Verificar si el usuario ya existe
-    $resultado = select($conexion, 'usuarios', '*', "usuario = '$usuario'");
-
-    // Si no obtenemos resultado (no existe)
-    if ($resultado->num_rows === 0) {
-        // Insertar nuevo usuario en la base de datos
-        $campos = "usuario, password, nombre, apellido1, apellido2";
-        $valores = "'$usuario', '$password', '$nombre', '$apellido1', '$apellido2'";
-
-        // Tratamos de insertar el nuevo usuario en la tabla
-        if (insert($conexion, 'usuarios', $campos, $valores)) {
-            // Redirigir al inicio de sesión tras el registro exitoso
-            $exito = "Usuario registrado con éxito.";
-            header('Refresh: 5; url=iniciarsesion.php');
-            exit;
-        } 
-        // Si no se puede
-        else $error = "Error al registrar el usuario. Por favor, inténtalo de nuevo.";
-    } 
-    // Si ya existe
-    else $error = "El usuario ya existe. Por favor, elije otro nombre de usuario.";
-}
+    // Cargar ficheros necesarios
+    require_once '../global.php';
 ?>
 
+<!-- Comprobar sesión iniciada y tratar datos -->
+<?php
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+    
+    // Guardar mensajes de la sesión de forma local si tienen contenido, si no, la inicializa vacía
+    $exito = isset($_SESSION['exito']) ? $_SESSION['exito'] : "";
+    $error = isset($_SESSION['error']) ? $_SESSION['error'] : "";
+    
+    // Vaciar datos de la sesion ya guardados de forma local
+    unset($_SESSION['exito']);
+    unset($_SESSION['error']);
+?>
+
+<!-- Contenido a mostrar -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -51,10 +31,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <?php include('../cabecera.php'); ?>
     <main>
+        <h1>
+            REGISTRAR NUEVO USUARIO
+        </h1>
         <!-- Formulario de datos de usuario con método POST -->
         <div class="formulario">
             <div><h2>Registrar Usuario</h2></div>
-            <form action="" method="POST">
+            <form action="./funciones_sesion/registrar.php" method="POST">
                 <div>
                     <label for="usuario">Usuario:</label>
                     <input type="text" id="usuario" name="usuario" required>
@@ -82,13 +65,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 <br>
                 <div>
-                    <button type="submit">Registrar</button>
+                    <button type="submit" <?php if (!empty($exito)) echo "disabled" ?> >Registrar</button>
                 </div>
             </form>
             <!-- Si registramos algún error en el registro, lo mostramos en rojo -->
             <?php if (!empty($error)) echo "<p style='color:red;padding:1%;'>$error</p>"; ?>
             <!-- Si se registra exitosamente, lo mostramos en verde -->
-            <?php if (!empty($exito)) echo "<p style='color:green;padding:1%;'>$exito</p>"; ?>
+            <?php if (!empty($exito)) {
+                echo "<p style='color:green;padding:1%;'>$exito</p>"; 
+                header('Refresh: 5; url=iniciarsesion.php');
+            }
+            ?>
         </div>
     </main>
     <?php include('../pie.php'); ?>
