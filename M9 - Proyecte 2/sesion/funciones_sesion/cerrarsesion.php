@@ -7,6 +7,8 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+$mensaje = !empty($_SESSION['mensajesesion']) ? $_SESSION['mensajesesion'] : "";
+
 // Borrar la sesión activa
 if (isset($_SESSION['usuario'])) {
     // Borrar todas las variables guardadas de la sesión
@@ -15,7 +17,11 @@ if (isset($_SESSION['usuario'])) {
     session_destroy();
 }
 
-// Redirigir al usuario a la página de inicio con un mensaje de cierre
+// Iniciar nueva sesión
+session_start();
+
+// Redirigir al usuario a la página de inicio con mensaje
+$_SESSION['mensajesesion'] = "Se ha cerrado la sesión del usuario con éxito.".(!empty($mensaje) ? " $mensaje" : "");
 header('Location: '.URL_Proyecto.'index.php');
-exit;
+exit();
 ?>

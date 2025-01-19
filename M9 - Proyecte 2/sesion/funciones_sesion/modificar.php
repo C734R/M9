@@ -12,36 +12,106 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Definimos variables globales en la sesión
-    $_SESSION['exito'] = "";
-    $_SESSION['error'] = "";
+    $_SESSION['exitousuario'] = "";
+    $_SESSION['errorusuario'] = "";
+    $_SESSION['exitocontraseña'] = "";
+    $_SESSION['errorcontraseña'] = "";
+    $_SESSION['exitonombre'] = "";
+    $_SESSION['errornombre'] = "";
     
-    // Recopilamos datos introducidos
-    $usuario = $_POST['usuario'];
-    $password = hash("sha256",$_POST['password']);
-    $nombre = $_POST['nombre'];
-    $apellido1 = $_POST['apellido1'];
-    $apellido2 = $_POST['apellido2'];
+    // Tomamos nombre de usuario de la sesión para consultas BBDD
+    $usuario = $_SESSION['usuario']['usuario'];
 
-    // Buscar coincidencia en la base de datos
-    $resultado = update($conexion, 'usuarios', '*', "usuario = '$usuario'");
-    $resultado = update($conexion, 'usuarios','$' "usuario = '$usuario'");
+    // Si recibimos POST con usuarionuevo
+    if(!empty($_POST['usuarionuevo'])) {
 
-    // Si no obtenemos resultado (no existe)
-    if ($resultado->num_rows === 0) {
-        // Insertar nuevo usuario en la base de datos
-        $campos = "usuario, password, nombre, apellido1, apellido2";
-        $valores = "'$usuario', '$password', '$nombre', '$apellido1', '$apellido2'";
+        $usuarionuevo = $_POST['usuarionuevo'];
+        $resultado = select($conexion,'usuarios','*',"usuario = '$usuarionuevo'");
+        
+        if ($resultado->num_rows === 0) {
 
-        // Tratamos de insertar el nuevo usuario en la tabla
-        if (insert($conexion, 'usuarios', $campos, $valores)) {
-            // Redirigir al inicio de sesión tras el registro exitoso
-            $_SESSION['exito'] = "Usuario registrado con éxito. Redirigiendo a inicio de sesión...";
+            $resultado = update($conexion,'usuarios',"usuario='$usuarionuevo'","usuario = '$usuario'");
+        
+            if ($conexion->affected_rows > 0) {
+                $_SESSION['exitousuario'] = "Nombre de usuario modificado con éxito. Espera...";
+                $_SESSION['usuario']['usuario'] = $usuarionuevo;
+            }
+            else  $_SESSION['errorusuario'] = "Error. No se ha podido modificar el nombre de usuario. Espera...";
+        }
+        else $_SESSION['errorusuario'] = "Error. El nombre de usuario introducido ya existe. Selecciona otro. Espera...";
+    }
+    
+    // Si registramos algún mensaje relativo a usuario
+    if(!empty($_SESSION['errorusuario']) || !empty($_SESSION['exitousuario'])) {
+        echo "<meta http-equiv='refresh' content='0;url=".URL_Proyecto."sesion/areapersonal.php#botonusuario'>";
+        exit();
+    }
+
+    // Si recibimos POST con password
+    if(!empty($_POST['password'])) {
+        $password = hash("sha256",$_POST['password']);
+        // Buscar datos del usuario actual
+        $resultado = select($conexion, 'usuarios', '*', "usuario = '$usuario'");
+
+        // Si devuelve resultado (una fila)
+        if ($resultado->num_rows === 1) {
+            // Formateamos datos en array asociativo
+            $datos = $resultado->fetch_assoc();
+
+            // Si el dato contraseña coincide con la introducida
+            if ($password === $datos['password']) {
+                $passwordnueva1 = hash("sha256",$_POST['password1']);
+                $passwordnueva2 = hash("sha256",$_POST['password2']);
+            
+                if ($passwordnueva1 === $passwordnueva2) {
+                    $resultado = update($conexion, 'usuarios',"password='$passwordnueva1'","usuario = '$usuario'");
+                    if ($conexion->affected_rows > 0) $_SESSION['exitocontraseña'] = "Contraseña modificada con éxito. Espera...";
+                    else $_SESSION['errorcontraseña'] = "No se ha podido modificar la contraseña del usuario. Espera...";
+                }
+                else $_SESSION['errorcontraseña'] = "Error. Las nuevas contraseñas no coinciden. Espera...";
+            }
+            else $_SESSION['errorcontraseña'] = "Error. La contraseña actual introducida no coincide. Espera...";
+        }
+        else $_SESSION['errorcontraseña'] = "Error al acceder a los datos del servidor. Espera...";
+    }
+
+    // Si registramos algún mensaje relativo a contraseña
+    if(!empty($_SESSION['errorcontraseña']) || !empty($_SESSION['exitocontraseña'])) {
+        echo "<meta http-equiv='refresh' content='0;url=".URL_Proyecto."sesion/areapersonal.php#botoncontraseña'>";
+        exit();
+    }
+
+    // Si recibimos POST con nombre
+    if(!empty($_POST['nombre'])) {
+
+        // Recopilamos valores introducidos
+        $nombre = $_POST['nombre'];
+        $apellido1 = $_POST['apellido1'];
+        $apellido2 = $_POST['apellido2'];
+
+        // Realizamos consulta para actualizar datos
+        $resultado = update($conexion,'usuarios',"nombre='$nombre', apellido1='$apellido1', apellido2='$apellido2'","usuario = '$usuario'");
+
+        // Si no se reportan filas modificadas es que no ha ido bien
+        if ($conexion->affected_rows === 0) {
+            $_SESSION['errornombre'] = "No se ha podido modificar el nombre completo del usuario. Espera...";
         } 
-        // Si no se puede registrar
-        else $_SESSION['error'] = "Error al registrar el usuario. Por favor, inténtalo de nuevo.";
-    } 
-    // Si ya existe
-    else $_SESSION['error'] = "El usuario ya existe. Por favor, elije otro nombre de usuario.";
-    header("Location: ".URL_Proyecto."sesion/registrarusuario.php");
+        // Si ha ido bien, actualizamos datos sesión   
+        else{
+            $_SESSION['exitonombre'] = "Se ha modificado el nombre completo del usuario con éxito. Espera...";
+            $_SESSION['usuario']['nombre'] = $nombre;
+            $_SESSION['usuario']['apellido1'] = $apellido1;
+            $_SESSION['usuario']['apellido2'] = $apellido2;
+        } 
+    }
+
+    // Si registramos algún mensaje relativo a nombre
+    if(!empty($_SESSION['errornombre']) || !empty($_SESSION['exitonombre'])) {
+        echo "<meta http-equiv='refresh' content='0;url=".URL_Proyecto."sesion/areapersonal.php#botonnombre'>";
+        exit();
+    }
+
+    // En cualquier otro caso, volvemos a áreapersonal
+    header("Location: ".URL_Proyecto."sesion/areapersonal.php");
 }
 ?>
