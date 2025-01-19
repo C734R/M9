@@ -7,6 +7,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+// Si hay mensaje registrarlo, si no, definir mensaje vacío
 $mensaje = !empty($_SESSION['mensajesesion']) ? $_SESSION['mensajesesion'] : "";
 
 // Borrar la sesión activa
