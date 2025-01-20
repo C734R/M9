@@ -7,12 +7,13 @@
     }
     
     // Si no se ha registrado modelo, volver a la página de vehículos.
-    if (!isset($_SESSION['modelo'])) {
+    if (!isset($_POST['modelo'])) {
         header("Refresh: 5; url=productos.php");
         echo "<h1>Error: No se ha seleccionado ningún producto</h1>";
         echo "<p>Será redirigido a la página de productos en 5 segundos...</p>";
         exit();
     }
+    $_SESSION['precio_total'] = 0;
 ?>
 
 <html lang="es">
@@ -33,13 +34,16 @@
         <!-- Creamos formulario para pasar a la función de creación de alquiler -->
         <form class="formulario" action="funciones/crearAlquiler.php" method="post">
             <!-- Se muestra modelo seleccionado -->
-            <p>Modelo seleccionado: <strong style="color: #0056b3"><?php echo htmlspecialchars($_SESSION['modelo']); ?></strong></p>
+            <p>Modelo seleccionado: <strong style="color: #0056b3"><?= $_POST['modelo'] ; ?></strong></p>
             <!-- Días de alquiler mínimo 1 máximo 31 -->
-            <label for="dias_alquiler">Número de días alquilado:</label>
-            <input type="number" id="dias_alquiler" name="dias_alquiler" min="1" max = "31" required><br><br>
+            <label for="dias">Número de días alquilado:</label>
+            <input type="number" id="dias" name="dias" min="1" max = "31" required><br><br>
             <!-- Nombre del piloto -->
-            <label for="nombre_piloto">Nombre del piloto:</label>
-            <input type="text" id="nombre_piloto" name="nombre_piloto" required><br><br>
+            <label for="piloto">Nombre del piloto:</label>
+            <input type="text" id="piloto" name="piloto" placeholder="<?= $_SESSION['usuario']['usuario'] ?>" disabled><br><br>
+            <!-- Precio total -->
+            <label for="precio_total">Precio total:</label>
+            <input type="text" id="precio_total" name="precio_total" placeholder="<?= $_SESSION['precio_total'] ?>" disabled><br><br>
             <!-- Botón de registro -->
             <div>
                 <button type="submit" >¡¡A jugarse los papeles!!</button>

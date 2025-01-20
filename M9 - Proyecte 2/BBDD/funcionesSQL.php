@@ -10,6 +10,12 @@
         if(!empty($condicion)) $sql.=" WHERE $condicion";
         return $conexion->query($sql);
     }
+
+    // Consulta tipo SELECT con INNER JOIN
+    function select_innerjoin($conexion, $tabla, $campos, $join, $condicion){
+        $sql = "SELECT $campos FROM $tabla INNER JOIN $join WHERE $condicion";
+        return $conexion->query($sql);
+    }
     
     // Consulta tipo INSERT
     function insert($conexion, $tabla, $campos, $valores){

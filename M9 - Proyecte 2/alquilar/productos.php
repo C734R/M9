@@ -1,7 +1,6 @@
 <?php
     require_once $_SERVER['DOCUMENT_ROOT'].'/M9/M9 - Proyecte 2/global.php';
-?>
-<?php
+
     // Iniciar sesión y eliminar modelo si existe
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
@@ -9,6 +8,15 @@
     if (isset($_SESSION['modelo'])) {
         unset($_SESSION['modelo']);
     }
+
+    include($_SERVER['DOCUMENT_ROOT'].URL_Proyecto."alquilar/funciones/obtenercoches.php");
+
+    $cantidad_honda = isset($_SESSION['coches']['honda']['cantidad']) ? $_SESSION['coches']['honda']['cantidad'] : "0";
+    $cantidad_bmw = isset($_SESSION['coches']['bmw']['cantidad']) ? $_SESSION['coches']['bmw']['cantidad'] : "0";
+    $cantidad_mb = isset($_SESSION['coches']['mb']['cantidad']) ? $_SESSION['coches']['mb']['cantidad'] : "0";
+    $cantidad_evo = isset($_SESSION['coches']['evo']['cantidad']) ? $_SESSION['coches']['evo']['cantidad'] : "0";
+    $cantidad_ibiza = isset($_SESSION['coches']['ibiza']['cantidad']) ? $_SESSION['coches']['ibiza']['cantidad'] : "0";
+    $no_sesion = isset($_SESSION['usuario']['usuario']) ? false : true;
 ?>
 <html lang="es">
 <link rel="shortcut icon" href="<?=URL_Proyecto?>img/logo.ico" />
@@ -28,7 +36,7 @@
         <!-- Información del Honda S2000 -->
         <div class="titulocoche">HONDA S2000</div>
         <div class="coche">
-            <img class="coche-img" src="<?=URL_Proyecto?>img/honda-S2000.avif" alt="S2000">
+            <img class="coche-img" src="<?=URL_Proyecto?>img/honda-S2000.avif" alt="HONDAS2000">
             <div class="coche-info">
                 <p>Modificado con Stage 3, este S2000 redefine el concepto de conducción extrema en la ciudad, alcanzando altas revoluciones con máxima estabilidad.</p>
                 <ul class="caracteristicas">
@@ -37,13 +45,15 @@
                     <li>Color: Gris Perlado</li>
                     <li>Transmisión: Secuencial de 7 velocidades</li>
                     <li>Características destacadas: Turbo híbrido de alto rendimiento y suspensión ajustable para derrapes</li>
+                    <li>Stock disponible: <?=$cantidad_honda?></li>
                 </ul>
             </div>
             <div>
                 <form action="<?=URL_Proyecto?>alquilar/formAlquiler.php" method="POST">
                     <div>
                         <input type="hidden" name="modelo" value="HONDAS2000" required>
-                        <button class="boton-alquiler" type="submit">¡¡ME LO QUEDO!!</button>
+                        <?php if($no_sesion) echo "<button class='boton-alquiler' disabled>Inicia sesión primero.</button>"?> 
+                        <button class="boton-alquiler" type="submit" <?php if($no_sesion) echo "disabled"?>>¡¡ME LO QUEDO!!</button>
                     </div>
                 </form>  
             </div>
@@ -62,13 +72,15 @@
                     <li>Color: Negro Piano</li>
                     <li>Transmisión: Secuencial de 6 velocidades</li>
                     <li>Características destacadas: Kit aerodinámico completo y frenos cerámicos deportivos</li>
+                    <li>Stock disponible: <?=$cantidad_bmw?></li>
                 </ul>
             </div>
             <div>
                 <form action="<?=URL_Proyecto?>alquilar/formAlquiler.php" method="POST">
                     <div>
                         <input type="hidden" name="modelo" value="BMWM3E30" required>
-                        <button class="boton-alquiler" type="submit">¡¡ME LO QUEDO!!</button>
+                        <?php if($no_sesion) echo "<button class='boton-alquiler' disabled>Inicia sesión primero.</button>"?> 
+                        <button class="boton-alquiler" type="submit" <?php if($no_sesion) echo "disabled"?>>¡¡ME LO QUEDO!!</button>
                     </div>
                 </form>  
             </div>
@@ -87,13 +99,15 @@
                     <li>Color: Negro obsidiana</li>
                     <li>Transmisión: Secuencial de 5 velocidades</li>
                     <li>Características destacadas: Escape deportivo AMG y sistema de tracción reforzada</li>
+                    <li>Stock disponible: <?=$cantidad_mb?></li>
                 </ul>
             </div>
             <div>
                 <form action="<?=URL_Proyecto?>alquilar/formAlquiler.php" method="POST">
-                    <div>
+                    <div class='centrar'>
                         <input type="hidden" name="modelo" value="MBW201AMG190EDCM" required>
-                        <button class="boton-alquiler" type="submit">¡¡ME LO QUEDO!!</button>
+                        <?php if($no_sesion) echo "<button class='boton-alquiler' disabled>Inicia sesión primero.</button>"?> 
+                        <button class="boton-alquiler" type="submit" <?php if($no_sesion) echo "disabled"?>>¡¡ME LO QUEDO!!</button>
                     </div>
                 </form>  
             </div>
@@ -112,13 +126,15 @@
                     <li>Color: Naranja Ocaso Japonés</li>
                     <li>Transmisión: Secuencial de 6 velocidades con doble embrague</li>
                     <li>Características destacadas: Sistema anti-lag, kit de frenos Brembo y suspensión de altura ajustable</li>
+                    <li>Stock disponible: <?=$cantidad_evo?></li>
                 </ul>
             </div>
             <div>
                 <form action="<?=URL_Proyecto?>alquilar/formAlquiler.php" method="POST">
                     <div>
                         <input type="hidden" name="modelo" value="EVO9" required>
-                        <button class="boton-alquiler" type="submit">¡¡ME LO QUEDO!!</button>
+                        <?php if($no_sesion) echo "<button class='boton-alquiler' disabled>Inicia sesión primero.</button>"?> 
+                        <button class="boton-alquiler" type="submit" <?php if($no_sesion) echo "disabled"?>>¡¡ME LO QUEDO!!</button>
                     </div>
                 </form>  
             </div>
@@ -137,13 +153,15 @@
                     <li>Color: Amarillo brillante</li>
                     <li>Transmisión: Manual reforzado de 6 velocidades</li>
                     <li>Características destacadas: Turbo de gran capacidad y neumáticos semi-slick</li>
+                    <li>Stock disponible: <?=$cantidad_ibiza?></li>
                 </ul>
             </div>
             <div>
                 <form action="<?=URL_Proyecto?>alquilar/formAlquiler.php" method="POST">
                     <div>
                         <input type="hidden" name="modelo" value="CUPRA6L" required>
-                        <button class="boton-alquiler" type="submit">¡¡ME LO QUEDO!!</button>
+                        <?php if($no_sesion) echo "<button class='boton-alquiler' disabled>Inicia sesión primero.</button>"?> 
+                        <button class="boton-alquiler" type="submit" <?php if($no_sesion) echo "disabled"?>>¡¡ME LO QUEDO!!</button>
                     </div>
                 </form>  
             </div>

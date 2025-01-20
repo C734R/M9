@@ -95,3 +95,9 @@
 .boton-productos:hover {
     background-color: #0056b3;        /* Color de fondo al pasar el ratón */
 }
+
+.centrar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

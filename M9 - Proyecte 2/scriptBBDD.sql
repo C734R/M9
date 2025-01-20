@@ -10,10 +10,10 @@ CREATE TABLE usuarios (
     apellido2 VARCHAR(100) NOT NULL
 );
 
-CREATE TABLE coches_stock (
+CREATE TABLE coches (
     id_coche INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     modelo VARCHAR(100) NOT NULL,
-    cantidad_disponible INT NOT NULL,
+    cantidad INT NOT NULL,
     precio float NOT NULL
 );
 
@@ -23,18 +23,20 @@ CREATE TABLE alquiler (
     piloto VARCHAR(100) NOT NULL,
     dias INT NOT NULL,
     FOREIGN KEY (piloto) REFERENCES usuarios(usuario),
-    FOREIGN KEY (coche) REFERENCES coches_stock(id_coche)
+    FOREIGN KEY (coche) REFERENCES coches(id_coche)
 );
 
+INSERT INTO coches(modelo,cantidad,precio)
+    VALUES ('HONDAS2000', 3 , 250.0);
 
-INSERT INTO coches_stock(modelo, cantidad_disponible,precio)
-    VALUES ('CUPRA6L', 6 , 100.0);
+INSERT INTO coches(modelo,cantidad,precio)
+    VALUES ('BMWM3E30', 2 , 300.0);
 
-INSERT INTO coches_stock(modelo, cantidad_disponible,precio)
-    VALUES ('CUPRA6L', 6 , 100.0);
+INSERT INTO coches(modelo,cantidad,precio)
+    VALUES ('MBW201AMG190EDCM', 2 , 400.0);
     
-INSERT INTO coches_stock(modelo, cantidad_disponible,precio)
-    VALUES ('CUPRA6L', 6 , 100.0);
+INSERT INTO coches(modelo,cantidad,precio)
+    VALUES ('EVO9', 4 , 350.0);
 
-INSERT INTO coches_stock(modelo, cantidad_disponible,precio)
-    VALUES ('CUPRA6L', 6 , 100.0);
+INSERT INTO coches(modelo,cantidad,precio)
+    VALUES ('CUPRA6L', 10 , 100.0);
