@@ -1,5 +1,5 @@
 <?php
-    require_once 'global.php';
+    require_once $_SERVER['DOCUMENT_ROOT'].'/M9/M9 - Proyecte 2/global.php';
 ?>
 
 <!-- Estilos de la cabecera -->
@@ -26,8 +26,8 @@
                 <nav>
                     <ul>
                         <li><a href="<?=URL_Proyecto?>index.php">Inicio</a></li>
-                        <li><a href="<?=URL_Proyecto?>productos.php">Coches</a></li>
-                        <li><a href="<?=URL_Proyecto?>alquilados.php">Alquileres registrados</a></li>
+                        <li><a href="<?=URL_Proyecto?>alquilar/productos.php">Coches</a></li>
+                        <li><a href="<?=URL_Proyecto?>alquilar/alquilados.php">Alquileres registrados</a></li>
                         <li><a href="<?=URL_Proyecto?>contacto.php">Contacto</a></li>
                     </ul>
                 </nav>

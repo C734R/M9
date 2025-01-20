@@ -1,5 +1,5 @@
 <?php
-    require_once 'global.php';
+    require_once $_SERVER['DOCUMENT_ROOT'].'/M9/M9 - Proyecte 2/global.php';
 ?>
 
 <html lang="es">
@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="<?=URL_Proyecto?>estilos/contacto.css">
 </head>
 <!-- Cabecera insertada -->
-<?php include('cabecera.php'); ?>
+<?php include($_SERVER['DOCUMENT_ROOT'].URL_Proyecto.'cabecera.php'); ?>
 <body>
     <main>
         <h1>
@@ -79,5 +79,5 @@
     </main>
 </body>
 <!-- Pie insertado -->
-<?php include('pie.php'); ?>
+<?php include($_SERVER['DOCUMENT_ROOT'].URL_Proyecto.'pie.php'); ?>
 </html>

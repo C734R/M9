@@ -1,21 +1,18 @@
 <?php
-    require_once 'global.php';
-?>
-<?php
-    // Iniciar sesión
+    require_once $_SERVER['DOCUMENT_ROOT'].'/M9/M9 - Proyecte 2/global.php';
+
+    // Iniciar sesión si no está iniciada
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
     }
     
     // Si no se ha registrado modelo, volver a la página de vehículos.
-    if (!isset($_GET['modelo'])) {
+    if (!isset($_SESSION['modelo'])) {
         header("Refresh: 5; url=productos.php");
         echo "<h1>Error: No se ha seleccionado ningún producto</h1>";
         echo "<p>Será redirigido a la página de productos en 5 segundos...</p>";
         exit();
     }
-    // Si lo está, se registra
-    $_SESSION['modelo'] = $_GET['modelo'];
 ?>
 
 <html lang="es">
@@ -27,7 +24,7 @@
     <link rel="stylesheet" href="<?=URL_Proyecto?>estilos/formulario.css">
 </head>
 <!-- Cabecera insertada -->
-<?php include('cabecera.php'); ?>
+<?php include($_SERVER['DOCUMENT_ROOT'].URL_Proyecto.'cabecera.php'); ?>
 <body>
     <main>
         <h1>
@@ -51,5 +48,5 @@
     </main>
 </body>
 <!-- Pie insertado -->
-<?php include('pie.php'); ?>
+<?php include($_SERVER['DOCUMENT_ROOT'].URL_Proyecto.'pie.php'); ?>
 </html>

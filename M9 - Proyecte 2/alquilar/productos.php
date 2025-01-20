@@ -1,5 +1,5 @@
 <?php
-    require_once 'global.php';
+    require_once $_SERVER['DOCUMENT_ROOT'].'/M9/M9 - Proyecte 2/global.php';
 ?>
 <?php
     // Iniciar sesión y eliminar modelo si existe
@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="<?=URL_Proyecto?>estilos/productos.css">
 </head>
 <!-- Insertar cabecera -->
-<?php include('cabecera.php'); ?>
+<?php include($_SERVER['DOCUMENT_ROOT'].URL_Proyecto.'cabecera.php'); ?>
 <body>
     <main>
         <h1>VEHÍCULOS DISPONIBLES</h1>
@@ -40,14 +40,20 @@
                 </ul>
             </div>
             <div>
-                <a href="<?=URL_Proyecto?>formAlquiler.php?modelo=Honda S2000" class="boton-alquiler">¡¡ME LO QUEDO!!</a>
+                <form action="<?=URL_Proyecto?>alquilar/formAlquiler.php" method="POST">
+                    <div>
+                        <input type="hidden" name="modelo" value="HONDAS2000" required>
+                        <button class="boton-alquiler" type="submit">¡¡ME LO QUEDO!!</button>
+                    </div>
+                </form>  
             </div>
+            <br>  
         </div>
 
         <!-- Información del BMW M3 E30 -->
         <div class="titulocoche">BMW M3 E30</div>
         <div class="coche">
-            <img class="coche-img" src="img/bmw-m3-e30.jpg" alt="M3 E30">
+            <img class="coche-img" src="<?=URL_Proyecto?>img/bmw-m3-e30.jpg" alt="M3 E30">
             <div class="coche-info">
                 <p>Con un Stage 3 completamente implementado, este M3 E30 es un referente en carreras callejeras gracias a su fiabilidad y estilo inigualables.</p>
                 <ul class="caracteristicas">
@@ -59,8 +65,14 @@
                 </ul>
             </div>
             <div>
-                <a href="<?=URL_Proyecto?>formAlquiler.php?modelo=BMW M3 E30" class="boton-alquiler">¡¡ME LO QUEDO!!</a>
+                <form action="<?=URL_Proyecto?>alquilar/formAlquiler.php" method="POST">
+                    <div>
+                        <input type="hidden" name="modelo" value="BMWM3E30" required>
+                        <button class="boton-alquiler" type="submit">¡¡ME LO QUEDO!!</button>
+                    </div>
+                </form>  
             </div>
+            <br>  
         </div>
 
         <!-- Información del Mercedes Benz W201 AMG 190E DCM -->
@@ -78,8 +90,14 @@
                 </ul>
             </div>
             <div>
-                <a href="<?=URL_Proyecto?>formAlquiler.php?modelo=Mercedes Benz W201 AMG 190E DCM" class="boton-alquiler">¡¡ME LO QUEDO!!</a>
+                <form action="<?=URL_Proyecto?>alquilar/formAlquiler.php" method="POST">
+                    <div>
+                        <input type="hidden" name="modelo" value="MBW201AMG190EDCM" required>
+                        <button class="boton-alquiler" type="submit">¡¡ME LO QUEDO!!</button>
+                    </div>
+                </form>  
             </div>
+            <br>  
         </div>
 
         <!-- Información del Mitsubishi Lancer EVO 9 -->
@@ -97,8 +115,14 @@
                 </ul>
             </div>
             <div>
-                <a href="<?=URL_Proyecto?>formAlquiler.php?modelo=Mitsubishi Lancer EVO 9" class="boton-alquiler">¡¡ME LO QUEDO!!</a>
+                <form action="<?=URL_Proyecto?>alquilar/formAlquiler.php" method="POST">
+                    <div>
+                        <input type="hidden" name="modelo" value="EVO9" required>
+                        <button class="boton-alquiler" type="submit">¡¡ME LO QUEDO!!</button>
+                    </div>
+                </form>  
             </div>
+            <br>  
         </div>
 
         <!-- Información del SEAT Ibiza Cupra 6L -->
@@ -116,11 +140,17 @@
                 </ul>
             </div>
             <div>
-                <a href="<?=URL_Proyecto?>formAlquiler.php?modelo=SEAT Ibiza Cupra 6L" class="boton-alquiler">¡¡ME LO QUEDO!!</a>
+                <form action="<?=URL_Proyecto?>alquilar/formAlquiler.php" method="POST">
+                    <div>
+                        <input type="hidden" name="modelo" value="CUPRA6L" required>
+                        <button class="boton-alquiler" type="submit">¡¡ME LO QUEDO!!</button>
+                    </div>
+                </form>  
             </div>
+            <br>  
         </div>
     </main>
 </body>
 <!-- Insertar pie de página -->
-<?php include('pie.php'); ?>
+<?php include($_SERVER['DOCUMENT_ROOT'].URL_Proyecto.'pie.php'); ?>
 </html>

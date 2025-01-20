@@ -1,6 +1,6 @@
 <?php
 // Cargar archivos necesarios
-require_once '../../global.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/M9/M9 - Proyecte 2/global.php';
 
 // Iniciar la sesión si no está ya iniciada
 if (session_status() === PHP_SESSION_NONE) {

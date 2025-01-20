@@ -1,5 +1,5 @@
 <?php
-    require_once 'global.php';
+    require_once $_SERVER['DOCUMENT_ROOT'].'/M9/M9 - Proyecte 2/global.php';
     // Iniciar la sesión si no está ya iniciada
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
@@ -13,11 +13,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Págna principal - Underground Workshop</title>
-    <link rel="stylesheet" href="./estilos/estilos.css">
-    <link rel="stylesheet" href="./estilos/productos.css">
+    <link rel="stylesheet" href="<?=URL_Proyecto?>estilos/estilos.css">
+    <link rel="stylesheet" href="<?=URL_Proyecto?>estilos/productos.css">
 </head>
 <!-- Cabecera insertada -->
-<?php include('cabecera.php'); ?>
+<?php include($_SERVER['DOCUMENT_ROOT'].URL_Proyecto.'cabecera.php'); ?>
 <body>
     <main>
         <!-- Bloque de objetos en columna -->
@@ -37,10 +37,10 @@
                 <br>
             </h3>
             <!-- Botón de acceso a los productos -->
-            <a class="boton-productos" href="productos.php" >¡¡A quemar asfalto!!</a>
+            <a class="boton-productos" href="<?=URL_Proyecto?>alquilar/productos.php" >¡¡A quemar asfalto!!</a>
         </div>
     </main>
 </body>
 <!-- Pie de página insertado -->
-<?php include('pie.php'); ?>
+<?php include($_SERVER['DOCUMENT_ROOT'].URL_Proyecto.'pie.php'); ?>
 </html>

@@ -1,7 +1,7 @@
 <!-- Ficheros necesarios -->
 <?php
     // Cargar ficheros necesarios
-    require_once '../global.php';
+    require_once $_SERVER['DOCUMENT_ROOT'].'/M9/M9 - Proyecte 2/global.php';
 ?>
 
 <!-- Comprobar sesión iniciada y tratar datos -->
@@ -50,7 +50,7 @@
     <link rel="stylesheet" href="<?=URL_Proyecto?>estilos/formulario.css">
 </head>
 <body>
-    <?php include('../cabecera.php'); ?>
+    <?php include($_SERVER['DOCUMENT_ROOT'].URL_Proyecto.'cabecera.php'); ?>
     <main>
         <h1>
             ÁREA PERSONAL
@@ -173,7 +173,7 @@
             <?php if (!empty($erroreliminar)) echo "<p style='color:red;padding:1%;'>$erroreliminar</p>"; ?>
         </div>
     </main>
-    <?php include('../pie.php'); ?>
+    <?php include($_SERVER['DOCUMENT_ROOT'].URL_Proyecto.'pie.php'); ?>
 </body>
 </html>
 

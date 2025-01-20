@@ -1,7 +1,7 @@
 <!-- Ficheros necesarios -->
 <?php
 // Cargar ficheros necesarios
-require_once '../global.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/M9/M9 - Proyecte 2/global.php';
 require_once '../BBDD/funcionesSQL.php';
 ?>
 
@@ -29,7 +29,7 @@ require_once '../BBDD/funcionesSQL.php';
     <link rel="stylesheet" href="<?=URL_Proyecto?>estilos/formulario.css">
 </head>
 <body>
-    <?php include('../cabecera.php'); ?>
+    <?php include($_SERVER['DOCUMENT_ROOT'].URL_Proyecto.'cabecera.php'); ?>
     <main>
         <h1>
             INICIAR SESIÓN
@@ -60,7 +60,7 @@ require_once '../BBDD/funcionesSQL.php';
             ?>
         </div>
     </main>
-    <?php include('../pie.php'); ?>
+    <?php include($_SERVER['DOCUMENT_ROOT'].URL_Proyecto.'pie.php'); ?>
 </body>
 </html>
 
