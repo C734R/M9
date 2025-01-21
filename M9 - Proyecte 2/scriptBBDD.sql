@@ -14,16 +14,21 @@ CREATE TABLE coches (
     id_coche INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     modelo VARCHAR(100) NOT NULL,
     cantidad INT NOT NULL,
-    precio float NOT NULL
+    precio FLOAT NOT NULL
 );
 
-CREATE TABLE alquiler (
+CREATE TABLE alquileres (
     id_alquiler INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     coche INT NOT NULL,
     piloto VARCHAR(100) NOT NULL,
     dias INT NOT NULL,
+    precio_total FLOAT NOT NULL,
     FOREIGN KEY (piloto) REFERENCES usuarios(usuario),
+        ON UPDATE CASCADE,
+        ON DELETE SET NULL,
     FOREIGN KEY (coche) REFERENCES coches(id_coche)
+        ON UPDATE CASCADE,
+        ON DELETE SET NULL
 );
 
 INSERT INTO coches(modelo,cantidad,precio)

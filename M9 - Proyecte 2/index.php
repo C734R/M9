@@ -6,7 +6,11 @@
     }
     
     $mensaje = isset($_SESSION['mensajesesion']) ? $_SESSION['mensajesesion'] : "";
-    unset($_SESSION['mensajesesion']);
+    unset($_SESSION['mensajesesion']);    
+    $error = isset($_SESSION['errorsesion']) ? $_SESSION['errorsesion'] : "";
+    unset($_SESSION['errorsesion']);
+
+    $deshabilitar = !empty($error) ? true : false;
 ?>
 <html lang="es">
 <link rel="shortcut icon" href="img/logo.ico" />
@@ -28,6 +32,7 @@
             <img class="imgportada" src="img/portada.png" alt="portada">
             <!-- Si registramos algún error en el registro, lo mostramos en rojo -->
             <?php if (!empty($mensaje)) echo "<p style='color:green;padding:1%;'>$mensaje</p>"; ?>       
+            <?php if (!empty($error)) echo "<p style='color:red;padding:1%;'>$error</p>"; ?>       
             <h3>
                 <p>¿Cansado de alquilar el típico coche de ciudad para tus vacaciones?
                 <br>
@@ -37,7 +42,7 @@
                 <br>
             </h3>
             <!-- Botón de acceso a los productos -->
-            <a class="boton-productos" href="<?=URL_Proyecto?>alquilar/productos.php" >¡¡A quemar asfalto!!</a>
+            <a class="boton-productos" href="<?=URL_Proyecto?>alquilar/productos.php" <?php if($deshabilitar) echo "disabled"?>>¡¡A quemar asfalto!!</a>
         </div>
     </main>
 </body>

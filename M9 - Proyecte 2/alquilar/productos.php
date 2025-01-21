@@ -5,19 +5,37 @@
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
     }
+    // Resetear variable modelo
     if (isset($_SESSION['modelo'])) {
         unset($_SESSION['modelo']);
     }
 
+    // Reset variables
+    $error = "";
+    $deshabilitar = false;
+
+
+    // Obtener datos coches registrados
     include($_SERVER['DOCUMENT_ROOT'].URL_Proyecto."alquilar/funciones/obtenercoches.php");
 
-    $cantidad_honda = isset($_SESSION['coches']['honda']['cantidad']) ? $_SESSION['coches']['honda']['cantidad'] : "0";
-    $cantidad_bmw = isset($_SESSION['coches']['bmw']['cantidad']) ? $_SESSION['coches']['bmw']['cantidad'] : "0";
-    $cantidad_mb = isset($_SESSION['coches']['mb']['cantidad']) ? $_SESSION['coches']['mb']['cantidad'] : "0";
-    $cantidad_evo = isset($_SESSION['coches']['evo']['cantidad']) ? $_SESSION['coches']['evo']['cantidad'] : "0";
-    $cantidad_ibiza = isset($_SESSION['coches']['ibiza']['cantidad']) ? $_SESSION['coches']['ibiza']['cantidad'] : "0";
+    // Si mensaje error guardar local y refrescar 5s
+    if (isset($_SESSION['mensaje_producto_error']) || isset($_SESSION['mensaje_coches_error'])) {
+        $error .= !empty($_SESSION['mensaje_producto_error']).!empty($_SESSION['mensaje_coches_error']);
+        if (isset($_SESSION['mensaje_producto_error'])) unset($_SESSION['mensaje_producto_error']);
+        if (isset($_SESSION['mensaje_coches_error'])) unset($_SESSION['mensaje_coches_error']);
+        header("Refresh: 5; url=".URL_Proyecto."alquilar/productos.php");
+    }
+    
+    // Registrar localmente cantidades coches
+    $cantidad_honda = isset($_SESSION['coches']['HONDAS2000']['cantidad']) ? $_SESSION['coches']['HONDAS2000']['cantidad'] : "0";
+    $cantidad_bmw = isset($_SESSION['coches']['BMWM3E30']['cantidad']) ? $_SESSION['coches']['BMWM3E30']['cantidad'] : "0";
+    $cantidad_mb = isset($_SESSION['coches']['MBW201AMG190EDCM']['cantidad']) ? $_SESSION['coches']['MBW201AMG190EDCM']['cantidad'] : "0";
+    $cantidad_evo = isset($_SESSION['coches']['EVO9']['cantidad']) ? $_SESSION['coches']['EVO9']['cantidad'] : "0";
+    $cantidad_ibiza = isset($_SESSION['coches']['CUPRA6L']['cantidad']) ? $_SESSION['coches']['CUPRA6L']['cantidad'] : "0";
     $no_sesion = isset($_SESSION['usuario']['usuario']) ? false : true;
+    if($no_sesion || !empty($error)) $deshabilitar = true;
 ?>
+
 <html lang="es">
 <link rel="shortcut icon" href="<?=URL_Proyecto?>img/logo.ico" />
 <head>
@@ -32,7 +50,7 @@
     <main>
         <h1>VEHÍCULOS DISPONIBLES</h1>
         <br>
-        
+        <?php if (!empty($error)) echo "<p style='color:red;padding:1%;'>$error</p>"; ?>
         <!-- Información del Honda S2000 -->
         <div class="titulocoche">HONDA S2000</div>
         <div class="coche">
@@ -53,7 +71,7 @@
                     <div>
                         <input type="hidden" name="modelo" value="HONDAS2000" required>
                         <?php if($no_sesion) echo "<button class='boton-alquiler' disabled>Inicia sesión primero.</button>"?> 
-                        <button class="boton-alquiler" type="submit" <?php if($no_sesion) echo "disabled"?>>¡¡ME LO QUEDO!!</button>
+                        <button class="boton-alquiler" type="submit" <?php if($deshabilitar) echo "disabled"?>>¡¡ME LO QUEDO!!</button>
                     </div>
                 </form>  
             </div>
@@ -80,7 +98,7 @@
                     <div>
                         <input type="hidden" name="modelo" value="BMWM3E30" required>
                         <?php if($no_sesion) echo "<button class='boton-alquiler' disabled>Inicia sesión primero.</button>"?> 
-                        <button class="boton-alquiler" type="submit" <?php if($no_sesion) echo "disabled"?>>¡¡ME LO QUEDO!!</button>
+                        <button class="boton-alquiler" type="submit" <?php if($deshabilitar) echo "disabled"?>>¡¡ME LO QUEDO!!</button>
                     </div>
                 </form>  
             </div>
@@ -107,7 +125,7 @@
                     <div class='centrar'>
                         <input type="hidden" name="modelo" value="MBW201AMG190EDCM" required>
                         <?php if($no_sesion) echo "<button class='boton-alquiler' disabled>Inicia sesión primero.</button>"?> 
-                        <button class="boton-alquiler" type="submit" <?php if($no_sesion) echo "disabled"?>>¡¡ME LO QUEDO!!</button>
+                        <button class="boton-alquiler" type="submit" <?php if($deshabilitar) echo "disabled"?>>¡¡ME LO QUEDO!!</button>
                     </div>
                 </form>  
             </div>
@@ -134,7 +152,7 @@
                     <div>
                         <input type="hidden" name="modelo" value="EVO9" required>
                         <?php if($no_sesion) echo "<button class='boton-alquiler' disabled>Inicia sesión primero.</button>"?> 
-                        <button class="boton-alquiler" type="submit" <?php if($no_sesion) echo "disabled"?>>¡¡ME LO QUEDO!!</button>
+                        <button class="boton-alquiler" type="submit" <?php if($deshabilitar) echo "disabled"?>>¡¡ME LO QUEDO!!</button>
                     </div>
                 </form>  
             </div>
@@ -161,7 +179,7 @@
                     <div>
                         <input type="hidden" name="modelo" value="CUPRA6L" required>
                         <?php if($no_sesion) echo "<button class='boton-alquiler' disabled>Inicia sesión primero.</button>"?> 
-                        <button class="boton-alquiler" type="submit" <?php if($no_sesion) echo "disabled"?>>¡¡ME LO QUEDO!!</button>
+                        <button class="boton-alquiler" type="submit" <?php if($deshabilitar) echo "disabled"?>>¡¡ME LO QUEDO!!</button>
                     </div>
                 </form>  
             </div>

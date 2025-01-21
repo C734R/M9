@@ -1,19 +1,17 @@
 <?php
-    require_once $_SERVER['DOCUMENT_ROOT'].'/M9/M9 - Proyecte 2/global.php';
-?>
-<!-- Iniciamos sesión para usar registro -->
-<?php
-    if (session_status() === PHP_SESSION_NONE) {
-        session_start();
-    }
+require_once $_SERVER['DOCUMENT_ROOT'].'/M9/M9 - Proyecte 2/global.php';
 
-    $mensaje_error = isset($_SESSION['mensaje_error']) ?  $_SESSION['mensaje_error'] : "";
-    $mensaje_exito = isset($_SESSION['mensaje_exito']) ?  $_SESSION['mensaje_exito'] : "";
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
-    unset($_SESSION['mensaje_error']);
-    unset($_SESSION['mensaje_exito']);
+$mensaje_error = isset($_SESSION['mensaje_error']) ?  $_SESSION['mensaje_error'] : "";
+$mensaje_exito = isset($_SESSION['mensaje_exito']) ?  $_SESSION['mensaje_exito'] : "";
 
-    if(!empty($mensaje_error) || !empty($mensaje_exito)) echo "<meta http-equiv='refresh' content='5;url=alquilados.php#'>";
+unset($_SESSION['mensaje_error']);
+unset($_SESSION['mensaje_exito']);
+
+if(!empty($mensaje_error) || !empty($mensaje_exito)) echo "<meta http-equiv='refresh' content='5;url=alquilados.php#'>";
 
 ?>
 <html lang="es">
