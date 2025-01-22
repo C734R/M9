@@ -11,7 +11,14 @@
     unset($_SESSION['errorsesion']);
 
     $deshabilitar = !empty($error) ? true : false;
+
+    // Actualizar página cuando haya mensaje de error o éxito, permitiendo de nuevo la introducción
+    if (!empty($error)  || !empty($mensaje)) {
+        $deshabilitar = true;
+        echo "<meta http-equiv='refresh' content='5;url=index.php'>";
+    }
 ?>
+
 <html lang="es">
 <link rel="shortcut icon" href="img/logo.ico" />
 <head>

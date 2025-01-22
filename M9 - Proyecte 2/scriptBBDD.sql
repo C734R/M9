@@ -23,12 +23,12 @@ CREATE TABLE alquileres (
     piloto VARCHAR(100) NOT NULL,
     dias INT NOT NULL,
     precio_total FLOAT NOT NULL,
-    FOREIGN KEY (piloto) REFERENCES usuarios(usuario),
-        ON UPDATE CASCADE,
-        ON DELETE SET NULL,
+    FOREIGN KEY (piloto) REFERENCES usuarios(usuario)
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT,
     FOREIGN KEY (coche) REFERENCES coches(id_coche)
-        ON UPDATE CASCADE,
-        ON DELETE SET NULL
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT
 );
 
 INSERT INTO coches(modelo,cantidad,precio)

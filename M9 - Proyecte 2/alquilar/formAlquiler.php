@@ -25,6 +25,7 @@
     $dias = isset($_POST['_dias']) ? $_POST['_dias'] : '';
     $piloto = isset($_SESSION['usuario']['usuario']) ? $_SESSION['usuario']['usuario'] : '';
     $nombre_completo = isset($_SESSION['usuario']['usuario']) ? $_SESSION['usuario']['nombre']." ".$_SESSION['usuario']['apellido1']." ". $_SESSION['usuario']['apellido2'] : '' ;
+    
     // Calcular precio al modificar formulario
     $precio_total = isset($_POST['_dias']) ? ($_POST['_dias'] * $precio) : 0.0;
 

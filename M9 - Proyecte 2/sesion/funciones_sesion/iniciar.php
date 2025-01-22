@@ -12,8 +12,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Definimos variables globales en la sesión
-    $_SESSION['exito'] = "";
-    $_SESSION['error'] = "";
+    $_SESSION['exito_iniciar'] = "";
+    $_SESSION['error_iniciar'] = "";
 
     // Guardamos los datos recibidos del formulario de origen mediante POST
     $usuario = $_POST['usuario'];
@@ -37,16 +37,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'apellido2' => $datos['apellido2']
             ];
             // Volvemos a index.php
-            $_SESSION['exito'] = "Sesión iniciada con éxito.";
+            $_SESSION['exito_iniciar'] = "Sesión iniciada con éxito.";
         } 
         // Si la contraseña no coincide
         else {
-            $_SESSION['error'] = "Contraseña incorrecta.";
+            $_SESSION['error_iniciar'] = "Contraseña incorrecta.";
         }
     }
     // Si no devuelve resultado
     else {
-        $_SESSION['error'] = "Usuario no encontrado.";
+        $_SESSION['error_iniciar'] = "Usuario no encontrado. Vuelve a intentarlo...";
     }
 }
 

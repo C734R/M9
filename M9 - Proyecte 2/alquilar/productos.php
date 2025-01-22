@@ -13,6 +13,17 @@
     // Reset variables
     $error = "";
     $deshabilitar = false;
+    $inventario = isset($_GET['inventario']) ? $_GET['inventario'] : false;
+    $no_sesion = isset($_SESSION['usuario']['usuario']) ? false : true;
+    $usuario = !$nosesion ? $_SESSION['usuario']['usuario'] : '';
+    
+
+    // Si se accede en modo inventario sin ser admin, rechazamos acceso
+    if($inventario && $usuario <> 'admin') {
+        $_SESSION['error_cabecera'] = "Debes iniciar sesión de como administrador para poder gestionar los inventarios.";
+        header("Location: ".URL_Proyecto.'index.php');
+        exit();
+    }
 
 
     // Obtener datos coches registrados
@@ -32,8 +43,9 @@
     $cantidad_mb = isset($_SESSION['coches']['MBW201AMG190EDCM']['cantidad']) ? $_SESSION['coches']['MBW201AMG190EDCM']['cantidad'] : "0";
     $cantidad_evo = isset($_SESSION['coches']['EVO9']['cantidad']) ? $_SESSION['coches']['EVO9']['cantidad'] : "0";
     $cantidad_ibiza = isset($_SESSION['coches']['CUPRA6L']['cantidad']) ? $_SESSION['coches']['CUPRA6L']['cantidad'] : "0";
-    $no_sesion = isset($_SESSION['usuario']['usuario']) ? false : true;
-    if($no_sesion || !empty($error)) $deshabilitar = true;
+    
+    // Si hay error o no hay sesión, deshabilitar botones
+    if($no_sesion || !empty($error) || $inventario) $deshabilitar = true;
 ?>
 
 <html lang="es">
@@ -48,7 +60,8 @@
 <?php include($_SERVER['DOCUMENT_ROOT'].URL_Proyecto.'cabecera.php'); ?>
 <body>
     <main>
-        <h1>VEHÍCULOS DISPONIBLES</h1>
+        <?php if(!$inventario) echo "<h1>VEHÍCULOS DISPONIBLES</h1>" ?>
+        <?php if($inventario && $usuario = 'admin') echo "<h1>GESTIÓN DEL INVENTARIO</h1>" ?>
         <br>
         <?php if (!empty($error)) echo "<p style='color:red;padding:1%;'>$error</p>"; ?>
         <!-- Información del Honda S2000 -->
@@ -71,9 +84,23 @@
                     <div>
                         <input type="hidden" name="modelo" value="HONDAS2000" required>
                         <?php if($no_sesion) echo "<button class='boton-alquiler' disabled>Inicia sesión primero.</button>"?> 
-                        <button class="boton-alquiler" type="submit" <?php if($deshabilitar) echo "disabled"?>>¡¡ME LO QUEDO!!</button>
+                        <?php if(!$inventario) 
+                            echo "<button class='boton-alquiler' type='submit'"; 
+                            if($deshabilitar || $cantidad_honda <= 0) echo "disabled";
+                            echo ">¡¡ME LO QUEDO!!</button>";
+                        ?>
+                        
+
                     </div>
-                </form>  
+                </form>
+                <?php if($inventario)
+                    echo "<form action='".URL_Proyecto."alquilar/productos.php' method='POST'>";
+                        echo "<div>";
+                        echo "<label for='cantidad'>Cantidad a establecer:</label>";
+                        echo "<input type='number' id='_dias' name='_dias' value='".$dias."' min='1' max = '31' required onchange='this.form.submit()'><br><br>";
+                        echo "</div>";
+                    echo "</form>";  
+                ?>
             </div>
             <br>  
         </div>
@@ -98,7 +125,7 @@
                     <div>
                         <input type="hidden" name="modelo" value="BMWM3E30" required>
                         <?php if($no_sesion) echo "<button class='boton-alquiler' disabled>Inicia sesión primero.</button>"?> 
-                        <button class="boton-alquiler" type="submit" <?php if($deshabilitar) echo "disabled"?>>¡¡ME LO QUEDO!!</button>
+                        <button class="boton-alquiler" type="submit" <?php if($deshabilitar || $cantidad_bmw <= 0) echo "disabled"?>>¡¡ME LO QUEDO!!</button>
                     </div>
                 </form>  
             </div>
@@ -125,7 +152,7 @@
                     <div class='centrar'>
                         <input type="hidden" name="modelo" value="MBW201AMG190EDCM" required>
                         <?php if($no_sesion) echo "<button class='boton-alquiler' disabled>Inicia sesión primero.</button>"?> 
-                        <button class="boton-alquiler" type="submit" <?php if($deshabilitar) echo "disabled"?>>¡¡ME LO QUEDO!!</button>
+                        <button class="boton-alquiler" type="submit" <?php if($deshabilitar || $cantidad_mb <= 0) echo "disabled"?>>¡¡ME LO QUEDO!!</button>
                     </div>
                 </form>  
             </div>
@@ -152,7 +179,7 @@
                     <div>
                         <input type="hidden" name="modelo" value="EVO9" required>
                         <?php if($no_sesion) echo "<button class='boton-alquiler' disabled>Inicia sesión primero.</button>"?> 
-                        <button class="boton-alquiler" type="submit" <?php if($deshabilitar) echo "disabled"?>>¡¡ME LO QUEDO!!</button>
+                        <button class="boton-alquiler" type="submit" <?php if($deshabilitar || $cantidad_evo <= 0) echo "disabled"?>>¡¡ME LO QUEDO!!</button>
                     </div>
                 </form>  
             </div>
@@ -179,7 +206,7 @@
                     <div>
                         <input type="hidden" name="modelo" value="CUPRA6L" required>
                         <?php if($no_sesion) echo "<button class='boton-alquiler' disabled>Inicia sesión primero.</button>"?> 
-                        <button class="boton-alquiler" type="submit" <?php if($deshabilitar) echo "disabled"?>>¡¡ME LO QUEDO!!</button>
+                        <button class="boton-alquiler" type="submit" <?php if($deshabilitar || $cantidad_ibiza <= 0) echo "disabled"?>>¡¡ME LO QUEDO!!</button>
                     </div>
                 </form>  
             </div>

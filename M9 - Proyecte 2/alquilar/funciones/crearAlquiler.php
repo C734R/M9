@@ -28,22 +28,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Insertamos en BBDD
     insert($conexion, 'alquileres', "coche,piloto,dias,precio_total","'$id_coche','$piloto','$dias','$precio_total'");
-    if($conexion->affected_rows > 0) {
+    
+    // Si no hay filas afectadas, indicamos error y volvemos
+    if($conexion->affected_rows === 0) $_SESSION['error_alquiler'] = "Error. No se ha podido registrar el alquiler.";
+    // Si las hay, actualizamos cantidad disponible
+    else update($conexion,'coches','cantidad = (cantidad - 1)', "modelo = '$modelo'");
 
+    if($conexion->affected_rows > 0) {
         include($_SERVER['DOCUMENT_ROOT'].URL_Proyecto.'obtenerAlquileres.php');
-        // $resultado = select_innerjoin($conexion, 'alquileres','*','usuarios ON alquileres.piloto = usuarios.usuario',"usuario = '$piloto' ");
-        // if ($resultado->num_rows > 0) {
-        //     while ($datos = $resultado->fetch_assoc()) {
-        //         $_SESSION['alquileres'][] = 
-        //         [
-        //             'modelo' => $datos['modelo'],
-        //             'dias' => $datos['dias'],
-        //             'piloto' => $datos['piloto'],
-        //             'precio_total' => $datos['precio_total']
-        //         ];
-        //     }
-        // }
-        // else $_SESSION['error_alquiler'] = "Error. No se han obtenido resultados.";
     }
     else $_SESSION['error_alquiler'] = "Error. No se ha podido registrar el alquiler.";
 

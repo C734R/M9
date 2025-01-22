@@ -3,13 +3,21 @@
 require_once $_SERVER['DOCUMENT_ROOT'].'/M9/M9 - Proyecte 2/global.php';
 require_once $_SERVER['DOCUMENT_ROOT'].URL_Proyecto.'/BBDD/funcionesSQL.php';
 
-$piloto = $_SESSION['usuario']['usuario'];
+// Definir piloto según si hay o no usuario
+$piloto = isset($_SESSION['usuario']['usuario']) ? $_SESSION['usuario']['usuario'] : '' ;
 
-$resultado = select_innerjoin($conexion, 'alquileres','*','usuarios ON alquileres.piloto = usuarios.usuario',"usuario = '$piloto' ");
-if ($resultado->num_rows > 0) {
+// Resetear array alquileres
+unset($_SESSION['alquileres']);
+
+// Obtener resultados trazando datos 3 tablas
+$resultado =  !empty($piloto) ? select_innerjoin($conexion, 'alquileres','*','usuarios ON alquileres.piloto = usuarios.usuario INNER JOIN coches ON alquileres.coche = coches.id_coche',"usuario = '$piloto' ") : '';
+
+// Si hemos realizado consulta, registramos datos en sesión
+if (!empty($resultado) ?? $resultado->num_rows > 0) {
     while ($datos = $resultado->fetch_assoc()) {
         $_SESSION['alquileres'][] = 
         [
+            'id_alquiler' => $datos['id_alquiler'],
             'modelo' => $datos['modelo'],
             'dias' => $datos['dias'],
             'piloto' => $datos['piloto'],

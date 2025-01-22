@@ -1,5 +1,11 @@
 <?php
     require_once $_SERVER['DOCUMENT_ROOT'].'/M9/M9 - Proyecte 2/global.php';
+    require_once $_SERVER['DOCUMENT_ROOT'].URL_Proyecto.'sesion/funciones_sesion/checkusuario.php';
+
+    $mensaje_cabecera = isset($_SESSION['mensaje_cabecera']) ? $_SESSION['mensaje_cabecera'] : "";
+    unset($_SESSION['mensaje_cabecera']);    
+    $error_cabecera = isset($_SESSION['error_cabecera']) ? $_SESSION['error_cabecera'] : "";
+    unset($_SESSION['error_cabecera']);
 ?>
 
 <!-- Estilos de la cabecera -->
@@ -29,12 +35,18 @@
                         <li><a href="<?=URL_Proyecto?>alquilar/productos.php">Coches</a></li>
                         <li><a href="<?=URL_Proyecto?>alquilar/alquilados.php">Alquileres registrados</a></li>
                         <li><a href="<?=URL_Proyecto?>contacto.php">Contacto</a></li>
+                        <li><a href="<?=URL_Proyecto?>alquilar/productos.php?inventario=true">Inventario</a></li>
                     </ul>
                 </nav>
             </div>
+
+            <div>
+                <?php if (!empty($mensaje_cabecera)) echo "<p style='color:green;padding:1%;'>$mensaje_cabecera</p>"; ?>       
+                <?php if (!empty($error_cabecera)) echo "<p style='color:red;padding:1%;'>$error_cabecera</p>"; ?>    
+            </div>
         </div>
 
-        <!-- Sección vacía para mantener simetría -->
+        <!-- Sección sesión -->
         <div class="columna-20-der">
 
         <!-- Código sesión insertado -->
@@ -56,7 +68,7 @@
                     <p>Hola,</p>
                     <p><?= "$nombre, $apellido1 $apellido2" ?></p>
                     <div><a href="<?=URL_Proyecto?>sesion/areapersonal.php">Área personal</a></div>
-                    <div><a href="<?=URL_Proyecto?>sesion/funciones_sesion/cerrarsesion.php">Cerrar sesión</a></div>
+                    <div><a href="<?=URL_Proyecto?>sesion/funciones_sesion/cerrarsesion.php?ir=inicio">Cerrar sesión</a></div>
                 </div>
                 <?php
             } 

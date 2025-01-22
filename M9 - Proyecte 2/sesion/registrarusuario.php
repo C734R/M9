@@ -73,7 +73,7 @@
             <!-- Si se registra exitosamente, lo mostramos en verde -->
             <?php if (!empty($exito)) {
                 echo "<p style='color:green;padding:1%;'>$exito</p>"; 
-                header('Refresh: 5; url=iniciarsesion.php');
+                echo "<meta http-equiv='refresh' content='5;url=".URL_Proyecto."sesion/iniciarsesion.php'>";
             }
             ?>
         </div>
