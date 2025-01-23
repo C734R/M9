@@ -43,6 +43,7 @@
 
 <!-- Página Área Personal -->
 <html lang="es">
+<link rel="shortcut icon" href="<?=URL_Proyecto?>img/logo.ico" />
 <head>
     <meta charset="UTF-8">
     <title>Área personal - Underground Workshop</title>

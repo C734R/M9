@@ -20,6 +20,7 @@
 
 <!-- Página Inicio Sesión -->
 <html lang="es">
+<link rel="shortcut icon" href="<?=URL_Proyecto?>img/logo.ico" />
 <head>
     <meta charset="UTF-8">
     <title>Iniciar Sesión - Underground Workshop</title>

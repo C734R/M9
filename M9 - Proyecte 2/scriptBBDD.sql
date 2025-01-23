@@ -31,6 +31,9 @@ CREATE TABLE alquileres (
         ON DELETE RESTRICT
 );
 
+INSERT INTO usuarios(usuario,password,nombre,apellido1,apellido2)
+    VALUES ('admin', '1234' , 'super', 'mega', 'admin');
+
 INSERT INTO coches(modelo,cantidad,precio)
     VALUES ('HONDAS2000', 3 , 250.0);
 

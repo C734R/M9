@@ -1,7 +1,7 @@
 <?php
 // Cargar ficheros necesarios
 require_once $_SERVER['DOCUMENT_ROOT'].'/M9/M9 - Proyecte 2/global.php';
-require_once '../../BBDD/funcionesSQL.php';
+require_once $_SERVER['DOCUMENT_ROOT'].URL_Proyecto.'BBDD/funcionesSQL.php';
 
 
 // Si la solicitud HTTP es tipo 'POST'
@@ -22,8 +22,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Tomamos nombre de usuario de la sesión para consultas BBDD
     $usuario = $_SESSION['usuario']['usuario'];
 
-    // Si recibimos POST con usuarionuevo
-    if(!empty($_POST['usuarionuevo'])) {
+    // Si es admin, lo registramos
+    $admin = $usuario === 'admin' ? true : false;
+
+    // Si recibimos POST con usuarionuevo y no es admin
+    if(!empty($_POST['usuarionuevo']) && !$admin) {
 
         $usuarionuevo = $_POST['usuarionuevo'];
         $resultado = select($conexion,'usuarios','*',"usuario = '$usuarionuevo'");
@@ -40,7 +43,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         else $_SESSION['errorusuario'] = "Error. El nombre de usuario introducido ya existe. Selecciona otro. Espera...";
     }
-    
+    elseif ($admin) $_SESSION['errorusuario'] = "Error. No se puede modificar el nombre de usuario del administrador.";
+    else $_SESSION['errorusuario'] = "No se ha recibido un nuevo nombre de usuario válido.";
+
     // Si registramos algún mensaje relativo a usuario
     if(!empty($_SESSION['errorusuario']) || !empty($_SESSION['exitousuario'])) {
         echo "<meta http-equiv='refresh' content='0;url=".URL_Proyecto."sesion/areapersonal.php#botonusuario'>";

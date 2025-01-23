@@ -6,8 +6,9 @@
     }
     
     $mensaje = isset($_SESSION['mensajesesion']) ? $_SESSION['mensajesesion'] : "";
-    unset($_SESSION['mensajesesion']);    
     $error = isset($_SESSION['errorsesion']) ? $_SESSION['errorsesion'] : "";
+    
+    unset($_SESSION['mensajesesion']);    
     unset($_SESSION['errorsesion']);
 
     $deshabilitar = !empty($error) ? true : false;
@@ -20,7 +21,7 @@
 ?>
 
 <html lang="es">
-<link rel="shortcut icon" href="img/logo.ico" />
+<link rel="shortcut icon" href="<?=URL_Proyecto?>img/logo.ico" />
 <head>
     <meta charset="UTF-8">
     <title>Págna principal - Underground Workshop</title>

@@ -20,8 +20,8 @@
 ?>
 
 <!-- Contenido a mostrar -->
-<!DOCTYPE html>
 <html lang="es">
+<link rel="shortcut icon" href="<?=URL_Proyecto?>img/logo.ico" />
 <head>
     <meta charset="UTF-8">
     <title>Registrar Usuario - Underground Workshop</title>
@@ -69,13 +69,14 @@
                 </div>
             </form>
             <!-- Si registramos algún error en el registro, lo mostramos en rojo -->
-            <?php if (!empty($error)) echo "<p style='color:red;padding:1%;'>$error</p>"; ?>
+            <?php if (!empty($error)): ?>
+                <p style='color:red;padding:1%;'><?=$error?></p>
+            <?php endif; ?>
             <!-- Si se registra exitosamente, lo mostramos en verde -->
-            <?php if (!empty($exito)) {
-                echo "<p style='color:green;padding:1%;'>$exito</p>"; 
-                echo "<meta http-equiv='refresh' content='5;url=".URL_Proyecto."sesion/iniciarsesion.php'>";
-            }
-            ?>
+            <?php if (!empty($exito)): ?>
+                <p style='color:green;padding:1%;'><?=$exito?></p>
+                <meta http-equiv="refresh" content="5;url=<?=URL_Proyecto?>sesion/iniciarsesion.php">
+            <?php endif; ?>
         </div>
     </main>
     <?php include($_SERVER['DOCUMENT_ROOT'].URL_Proyecto.'pie.php'); ?>

@@ -2,7 +2,7 @@
 <?php
 // Cargar ficheros necesarios
 require_once $_SERVER['DOCUMENT_ROOT'].'/M9/M9 - Proyecte 2/global.php';
-require_once '../../BBDD/funcionesSQL.php';
+require_once $_SERVER['DOCUMENT_ROOT'].URL_Proyecto.'BBDD/funcionesSQL.php';
 
 // Si la solicitud HTTP es tipo 'POST'
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

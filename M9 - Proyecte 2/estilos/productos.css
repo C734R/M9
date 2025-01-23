@@ -1,10 +1,11 @@
 /* Título de cada coche */
 .titulocoche {
+    margin: 0% 5% 0% 5%;
     background-color: #363636;        /* Color de fondo del título */
     border: 1px solid #ddd;           /* Borde del título */
     font-size: 30px;                    /* Tamaño del texto */
     color: #1d64b4;                   /* Color del texto */
-    width: 100%;                        /* Proporción de ancho */
+    width: auto;                        /* Proporción de ancho */
     padding: 1%;                        /* Espaciado interno */
     text-align: center;                 /* Alineación centrada del texto */
     font-weight: bold;                  /* Texto en negrita */
@@ -12,6 +13,8 @@
 
 /* Contenedor de cada coche */
 .coche {
+    width: auto;                        /* Proporción de ancho */
+    margin: 0% 5% 0% 5%;
     background-color: #363636;            /* Color de fondo */
     border: 1px solid #ddd;               /* Borde */
     display: grid;                          /* Diseño basado en cuadrícula */
@@ -61,7 +64,7 @@
 /* Botón para alquilar un coche */
 .boton-alquiler {
     size-adjust: auto;                      /* Ajuste automático del tamaño */
-    margin-left: 20%;                       /* Margen izquierdo */
+    margin: 0% 10% 0% 10%;                  /* Márgenes */
     padding: 5% 10%;                        /* Espaciado interno */
     background-color: #242424;            /* Color de fondo */
     color: white;                         /* Color del texto */
@@ -69,6 +72,8 @@
     border-radius: 5px;                     /* Bordes redondeados */
     font-weight: bold;                      /* Texto en negrita */
     transition: background-color 0.3s ease; /* Transición suave del color */
+    min-width: 70%;                         /* Mínimo de ancho */
+    width: auto;                            /* Ancho automático */
 }
 
 /* Efecto del botón de alquiler */
@@ -96,8 +101,38 @@
     background-color: #0056b3;        /* Color de fondo al pasar el ratón */
 }
 
-.centrar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* Etiqueta y selector numérico */
+.cantidad {
+    display: inline-block;                  /* Bloque en línea */
+    margin: 0% 10% 0% 10%;                  /* Márgenes */
+    padding: 2% 1% 2% 1%;                   /* Espaciado interno */
+    background-color: #2d2d30;            /* Color de fondo */
+    color: white;                         /* Color del texto */
+    text-align: center;                     /* Texto centrado */
+    text-decoration: none;                  /* Sin subrayado */
+    border-radius: 5px;                     /* Bordes redondeados */
+    font-size: 16px;                        /* Tamaño del texto */
+    font-weight: bold;                      /* Texto en negrita */
+    min-width: 70%;                         /* Mínimo de ancho */
+    width: auto;                            /* Ancho automático */
+}
+
+.cantidad-boton{
+    display: inline-block;                  /* Bloque en línea */
+    margin: 0% 10% 0% 10%;                  /* Márgenes */
+    padding: 2% 1% 2% 1%;                   /* Espaciado interno */
+    background-color: #2d2d30;            /* Color de fondo */
+    color: white;                         /* Color del texto */
+    text-align: center;                     /* Texto centrado */
+    text-decoration: none;                  /* Sin subrayado */
+    border-radius: 5px;                     /* Bordes redondeados */
+    font-size: 16px;                        /* Tamaño del texto */
+    font-weight: bold;                      /* Texto en negrita */
+    min-width: 70%;                         /* Mínimo de ancho */
+    width: auto;                            /* Ancho automático */
+    transition: background-color 0.3s ease; /* Transición suave del color */
+}
+
+.cantidad-boton:hover {
+    background-color: #0056b3;        /* Color de fondo al pasar el ratón */
 }

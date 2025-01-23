@@ -26,9 +26,6 @@
     </section>
     <!-- Derechos de autor y desarrollador -->
     <div class="derechos-pie">
-        <p>&copy; 2024 Underground Workshop. Todos los derechos reservados.</p>
-        <p>Desarrollado por 
-            <a href="https://www.algasa.site" target="_blank">Algasa.site</a>
-        </p>
+        <p>&copy; 2025 Underground Workshop. Todos los derechos reservados. Desarrollado por <a href="https://www.algasa.site" target="_blank">Algasa.site</a></p>
     </div>
 </footer>
