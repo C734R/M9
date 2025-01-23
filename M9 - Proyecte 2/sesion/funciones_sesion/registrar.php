@@ -33,13 +33,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Tratamos de insertar el nuevo usuario en la tabla
         if (insert($conexion, 'usuarios', $campos, $valores)) {
             // Redirigir al inicio de sesión tras el registro exitoso
-            $_SESSION['exito'] = "Usuario registrado con éxito. Redirigiendo a inicio de sesión...";
+            $_SESSION['exito'] = "Usuario ".$usuario." registrado con éxito. Redirigiendo a inicio de sesión...";
         } 
         // Si no se puede registrar
-        else $_SESSION['error'] = "Error al registrar el usuario. Por favor, inténtalo de nuevo.";
+        else $_SESSION['error'] = "Error al registrar el usuario ".$usuario.". Por favor, inténtalo de nuevo. Espera...";
     } 
     // Si ya existe
-    else $_SESSION['error'] = "El usuario ya existe. Por favor, elije otro nombre de usuario.";
+    else $_SESSION['error'] = "El usuario ".$usuario." ya existe. Por favor, elije otro nombre de usuario. Espera...";
     echo "<meta http-equiv='refresh' content='0;url=".URL_Proyecto."sesion/registrarusuario.php'>";
 }
 ?>

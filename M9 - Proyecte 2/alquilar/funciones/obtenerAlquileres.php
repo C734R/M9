@@ -20,7 +20,7 @@ if (!empty($resultado) ?? $resultado->num_rows > 0) {
             'id_alquiler' => $datos['id_alquiler'],
             'modelo' => $datos['modelo'],
             'dias' => $datos['dias'],
-            'piloto' => $datos['piloto'],
+            'piloto' => $datos['nombre']." ".$datos['apellido1']." ".$datos['apellido2'],
             'precio_total' => $datos['precio_total']
         ];
     }

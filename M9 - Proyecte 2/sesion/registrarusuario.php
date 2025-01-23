@@ -40,27 +40,27 @@
             <form action="./funciones_sesion/registrar.php" method="POST">
                 <div>
                     <label for="usuario">Usuario:</label>
-                    <input type="text" id="usuario" name="usuario" required <?php if (!empty($exito)) echo "disabled" ?>>
+                    <input type="text" id="usuario" name="usuario" placeholder="user13..." required <?php if (!empty($exito)) echo "disabled" ?>>
                 </div>
 
                 <div>
                     <label for="password">Contraseña:</label>
-                    <input type="password" id="password" name="password" required <?php if (!empty($exito)) echo "disabled" ?>>
+                    <input type="password" id="password" name="password" placeholder="********" required <?php if (!empty($exito)) echo "disabled" ?>>
                 </div>
 
                 <div>
                     <label for="nombre">Nombre:</label>
-                    <input type="text" id="nombre" name="nombre" required <?php if (!empty($exito)) echo "disabled" ?>>
+                    <input type="text" id="nombre" name="nombre" placeholder="Pepe..." required <?php if (!empty($exito)) echo "disabled" ?>>
                 </div>
 
                 <div>
                     <label for="apellido1">Primer Apellido:</label>
-                    <input type="text" id="apellido1" name="apellido1" required <?php if (!empty($exito)) echo "disabled" ?>>
+                    <input type="text" id="apellido1" name="apellido1" placeholder="Gomez..." required <?php if (!empty($exito)) echo "disabled" ?>>
                 </div>
 
                 <div>
                     <label for="apellido2">Segundo Apellido:</label>
-                    <input type="text" id="apellido2" name="apellido2" required <?php if (!empty($exito)) echo "disabled" ?>>
+                    <input type="text" id="apellido2" name="apellido2" placeholder="Perez..." required <?php if (!empty($exito)) echo "disabled" ?>>
                 </div>
 
                 <br>

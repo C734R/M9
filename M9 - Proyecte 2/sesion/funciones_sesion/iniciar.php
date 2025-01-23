@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     // Si no devuelve resultado
     else {
-        $_SESSION['error_iniciar'] = "Usuario no encontrado. Vuelve a intentarlo...";
+        $_SESSION['error_iniciar'] = "Usuario no encontrado. Vuelve a intentarlo o crea un nuevo usuario. Espera...";
     }
 }
 

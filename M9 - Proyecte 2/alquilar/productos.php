@@ -47,7 +47,7 @@
 
     // Si se accede en modo inventario sin ser admin, rechazamos acceso
     if($inventario && $usuario <> 'admin') {
-        $_SESSION['error_cabecera'] = "Debes iniciar sesión de como administrador para poder gestionar los inventarios.";
+        $_SESSION['errorsesion'] = "Debes iniciar sesión de como administrador para poder gestionar los inventarios.";
         header("Location: ".URL_Proyecto.'index.php');
         exit();
     }

@@ -28,8 +28,6 @@ if (session_status() === PHP_SESSION_NONE) {
 $_SESSION['mensajesesion'] = "Se ha cerrado la sesión del usuario con éxito.".(!empty($mensaje) ? " $mensaje" : "");
 $_SESSION['errorsesion'] = $error;
 
-if(isset($_GET['ir']) && $_GET['ir'] == "inicio") {
-    header('Location: '.URL_Proyecto.'index.php');
-}
+header('Location: '.URL_Proyecto.'index.php');
 
 ?>
