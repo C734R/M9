@@ -26,6 +26,7 @@ unset($_SESSION['exitonombre']);
 unset($_SESSION['errornombre']);
 unset($_SESSION['erroreliminar']);
 
+// Según error, redireccionar y deshabilitar elementos
 if(!empty($exitousuario)  || !empty($errorusuario) || !empty($exitocontraseña) || !empty($errorcontraseña) || !empty($exitonombre) || !empty($errornombre)) {
     if(!empty($exitousuario)  || !empty($errorusuario)) echo "<meta http-equiv='refresh' content='5;url=areapersonal.php#botonusuario'>";
     if(!empty($exitocontraseña) || !empty($errorcontraseña)) echo "<meta http-equiv='refresh' content='5;url=areapersonal.php#botoncontraseña'>";

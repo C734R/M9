@@ -31,6 +31,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Registramos los datos de la BBDD en la sesión del navegador
             $_SESSION['usuario'] = [
                 'usuario' => $datos['usuario'],
+                // Guardar localmente contraseña RE-cifrada
+                'pass' => hash("sha_256",$datos['password']),
                 'nombre' => $datos['nombre'],
                 'apellido1' => $datos['apellido1'],
                 'apellido2' => $datos['apellido2']

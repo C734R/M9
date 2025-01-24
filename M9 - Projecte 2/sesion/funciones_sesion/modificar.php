@@ -44,7 +44,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         else $_SESSION['errorusuario'] = "Error. El nombre de usuario introducido ya existe. Selecciona otro. Espera...";
     }
     elseif ($admin) $_SESSION['errorusuario'] = "Error. No se puede modificar el nombre de usuario del administrador.";
-    else $_SESSION['errorusuario'] = "No se ha recibido un nuevo nombre de usuario válido.";
 
     // Si registramos algún mensaje relativo a usuario
     if(!empty($_SESSION['errorusuario']) || !empty($_SESSION['exitousuario'])) {
