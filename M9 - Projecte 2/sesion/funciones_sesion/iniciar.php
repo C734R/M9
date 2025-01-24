@@ -32,17 +32,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['usuario'] = [
                 'usuario' => $datos['usuario'],
                 // Guardar localmente contraseña RE-cifrada
-                'pass' => hash("sha_256",$datos['password']),
+                'pass' => hash("sha256",$datos['password']),
                 'nombre' => $datos['nombre'],
                 'apellido1' => $datos['apellido1'],
                 'apellido2' => $datos['apellido2']
             ];
             // Volvemos a index.php
-            $_SESSION['exito_iniciar'] = "Sesión iniciada con éxito.";
+            $_SESSION['exito_iniciar'] = "Sesión iniciada con éxito. Dirigiendo a la página de inicio...";
         } 
         // Si la contraseña no coincide
         else {
-            $_SESSION['error_iniciar'] = "Contraseña incorrecta.";
+            $_SESSION['error_iniciar'] = "Contraseña incorrecta. Vuelve a intentarlo. Espera...";
         }
     }
     // Si no devuelve resultado

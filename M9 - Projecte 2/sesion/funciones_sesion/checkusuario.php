@@ -27,7 +27,7 @@ elseif (!empty($pass) && $resultado->num_rows > 0) {
     $datos = $resultado -> fetch_assoc();
 
     // Comprobar coincidencia de 
-    $pass_OK = $pass === hash("sha_256",$datos['password']) ? true : false;
+    $pass_OK = $pass === hash("sha256",$datos['password']) ? true : false;
     if (!$pass_OK){
         $_SESSION['errorsesion'] = "La contraseña registrada no coincide con la de la sesión.".(!empty($_SESSION['errorsesion']) ? " ".$_SESSION['errorsesion'] : "");
         include($_SERVER['DOCUMENT_ROOT'].URL_Proyecto.'sesion/funciones_sesion/cerrarsesion.php');

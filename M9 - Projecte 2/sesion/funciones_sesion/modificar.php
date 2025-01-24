@@ -69,7 +69,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
                 if ($passwordnueva1 === $passwordnueva2) {
                     $resultado = update($conexion, 'usuarios',"password='$passwordnueva1'","usuario = '$usuario'");
-                    if ($conexion->affected_rows > 0) $_SESSION['exitocontraseña'] = "Contraseña modificada con éxito. Espera...";
+                    if ($conexion->affected_rows > 0) {
+                        $_SESSION['exitocontraseña'] = "Contraseña modificada con éxito. Espera...";
+                        $_SESSION['usuario']['pass'] = hash("sha256",$passwordnueva1);
+                    } 
                     else $_SESSION['errorcontraseña'] = "No se ha podido modificar la contraseña del usuario. Espera...";
                 }
                 else $_SESSION['errorcontraseña'] = "Error. Las nuevas contraseñas no coinciden. Espera...";
