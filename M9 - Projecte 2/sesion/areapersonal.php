@@ -1,6 +1,6 @@
 <?php
 // Cargar ficheros necesarios
-require_once $_SERVER['DOCUMENT_ROOT'].'/M9/M9 - Proyecte 2/global.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/M9/M9 - Projecte 2/global.php';
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -26,13 +26,13 @@ unset($_SESSION['exitonombre']);
 unset($_SESSION['errornombre']);
 unset($_SESSION['erroreliminar']);
 
-if (!empty($exitousuario)  || !empty($errorusuario) || !empty($exitocontraseña) || !empty($errorcontraseña) || !empty($exitonombre) || !empty($errornombre)) {
-if(!empty($exitousuario)  || !empty($errorusuario)) echo "<meta http-equiv='refresh' content='5;url=areapersonal.php#botonusuario'>";
-if(!empty($exitocontraseña) || !empty($errorcontraseña)) echo "<meta http-equiv='refresh' content='5;url=areapersonal.php#botoncontraseña'>";
-if(!empty($exitonombre) || !empty($errornombre)) echo "<meta http-equiv='refresh' content='5;url=areapersonal.php#botonnombre'>";
-if(!empty($exitoeliminar)) echo "<meta http-equiv='refresh' content='5;url=inicio.php'>";
-if(!empty($erroreliminar)) echo "<meta http-equiv='refresh' content='5;url=areapersonal.php#botoneliminar'>";
-$deshabilitar = true;
+if(!empty($exitousuario)  || !empty($errorusuario) || !empty($exitocontraseña) || !empty($errorcontraseña) || !empty($exitonombre) || !empty($errornombre)) {
+    if(!empty($exitousuario)  || !empty($errorusuario)) echo "<meta http-equiv='refresh' content='5;url=areapersonal.php#botonusuario'>";
+    if(!empty($exitocontraseña) || !empty($errorcontraseña)) echo "<meta http-equiv='refresh' content='5;url=areapersonal.php#botoncontraseña'>";
+    if(!empty($exitonombre) || !empty($errornombre)) echo "<meta http-equiv='refresh' content='5;url=areapersonal.php#botonnombre'>";
+    if(!empty($exitoeliminar)) echo "<meta http-equiv='refresh' content='5;url=inicio.php'>";
+    if(!empty($erroreliminar)) echo "<meta http-equiv='refresh' content='5;url=areapersonal.php#botoneliminar'>";
+    $deshabilitar = true;
 }?>
 
 <html lang="es">

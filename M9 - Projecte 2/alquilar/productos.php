@@ -1,6 +1,6 @@
 <?php
 // Cargar ficheros requeridos
-require_once $_SERVER['DOCUMENT_ROOT'].'/M9/M9 - Proyecte 2/global.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/M9/M9 - Projecte 2/global.php';
 
 // Iniciar sesión y eliminar modelo si existe
 if (session_status() === PHP_SESSION_NONE) {
