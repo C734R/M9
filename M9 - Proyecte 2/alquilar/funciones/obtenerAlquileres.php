@@ -1,5 +1,5 @@
 <?php
-// Obtener páginas necesarias
+// Cargar ficheros requeridos
 require_once $_SERVER['DOCUMENT_ROOT'].'/M9/M9 - Proyecte 2/global.php';
 require_once $_SERVER['DOCUMENT_ROOT'].URL_Proyecto.'/BBDD/funcionesSQL.php';
 

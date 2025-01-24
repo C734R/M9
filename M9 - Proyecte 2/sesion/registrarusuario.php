@@ -1,25 +1,20 @@
-<!-- Ficheros necesarios -->
 <?php
-    // Cargar ficheros necesarios
-    require_once $_SERVER['DOCUMENT_ROOT'].'/M9/M9 - Proyecte 2/global.php';
+// Cargar ficheros necesarios
+require_once $_SERVER['DOCUMENT_ROOT'].'/M9/M9 - Proyecte 2/global.php';
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Guardar mensajes de la sesión de forma local si tienen contenido, si no, la inicializa vacía
+$exito = isset($_SESSION['exito']) ? $_SESSION['exito'] : "";
+$error = isset($_SESSION['error']) ? $_SESSION['error'] : "";
+
+// Vaciar datos de la sesion ya guardados de forma local
+unset($_SESSION['exito']);
+unset($_SESSION['error']);
 ?>
 
-<!-- Comprobar sesión iniciada y tratar datos -->
-<?php
-    if (session_status() === PHP_SESSION_NONE) {
-        session_start();
-    }
-    
-    // Guardar mensajes de la sesión de forma local si tienen contenido, si no, la inicializa vacía
-    $exito = isset($_SESSION['exito']) ? $_SESSION['exito'] : "";
-    $error = isset($_SESSION['error']) ? $_SESSION['error'] : "";
-    
-    // Vaciar datos de la sesion ya guardados de forma local
-    unset($_SESSION['exito']);
-    unset($_SESSION['error']);
-?>
-
-<!-- Contenido a mostrar -->
 <html lang="es">
 <link rel="shortcut icon" href="<?=URL_Proyecto?>img/logo.ico" />
 <head>

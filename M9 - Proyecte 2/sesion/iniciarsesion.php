@@ -11,7 +11,7 @@ if (session_status() === PHP_SESSION_NONE) {
 // Guardar mensajes de la sesión de forma local si tienen contenido
 $exito_iniciar = isset($_SESSION['exito_iniciar']) ? $_SESSION['exito_iniciar'] : "";
 $error_iniciar = isset($_SESSION['error_iniciar']) ? $_SESSION['error_iniciar'] : "";
-$nombre = isset($_SESSION['usuario']['usuario']) ? $_SESSION['usuario']['usuario'] : "";
+$usuario = isset($_SESSION['usuario']['usuario']) ? $_SESSION['usuario']['usuario'] : "";
 
 // Vaciar datos de la sesion
 unset($_SESSION['exito_iniciar']);
@@ -46,12 +46,12 @@ $deshabilitar = !empty($exito_iniciar) || !empty($error_iniciar) ? true : false;
             <form action="<?=URL_Proyecto?>sesion/funciones_sesion/iniciar.php" method="POST">
                 <div>
                     <label for="usuario">Usuario:</label>
-                    <input type="text" id="usuario" name="usuario" required placeholder="<?=$nombre?>" <?php if($deshabilitar) echo "disabled"?>>
+                    <input type="text" id="usuario" name="usuario" required placeholder="<?=$usuario?>" <?php if($deshabilitar) echo "disabled"?>>
                 </div>
 
                 <div>
                     <label for="password">Contraseña:</label>
-                    <input type="password" id="password" name="password" required placeholder="<?php if(!empty($nombre)) echo "********" ?>" <?php if($deshabilitar) echo "disabled"?>>
+                    <input type="password" id="password" name="password" required placeholder="<?php if(!empty($usuario)) echo "********" ?>" <?php if($deshabilitar) echo "disabled"?>>
                 </div>
                 <br>
                 <div>

@@ -1,47 +1,40 @@
-<!-- Ficheros necesarios -->
 <?php
-    // Cargar ficheros necesarios
-    require_once $_SERVER['DOCUMENT_ROOT'].'/M9/M9 - Proyecte 2/global.php';
-?>
+// Cargar ficheros necesarios
+require_once $_SERVER['DOCUMENT_ROOT'].'/M9/M9 - Proyecte 2/global.php';
 
-<!-- Comprobar sesión iniciada y tratar datos -->
-<?php
-    if (session_status() === PHP_SESSION_NONE) {
-        session_start();
-    }
-    
-    // Guardar mensajes de la sesión de forma local si tienen contenido, si no, la inicializa vacía
-    $exitousuario = isset($_SESSION['exitousuario']) ? $_SESSION['exitousuario'] : "";
-    $errorusuario = isset($_SESSION['errorusuario']) ? $_SESSION['errorusuario'] : "";
-    $exitocontraseña = isset($_SESSION['exitocontraseña']) ? $_SESSION['exitocontraseña'] : "";
-    $errorcontraseña = isset($_SESSION['errorcontraseña']) ? $_SESSION['errorcontraseña'] : "";
-    $exitonombre = isset($_SESSION['exitonombre']) ? $_SESSION['exitonombre'] : "";
-    $errornombre = isset($_SESSION['errornombre']) ? $_SESSION['errornombre'] : "";
-    $erroreliminar = isset($_SESSION['erroreliminar']) ? $_SESSION['erroreliminar'] : "";
-    $usuario = isset($_SESSION['usuario']['usuario']) ? $_SESSION['usuario']['usuario'] : "";
-    $deshabilitar = false;
-    
-    // Vaciar datos de la sesion ya guardados de forma local
-    unset($_SESSION['exitousuario']);
-    unset($_SESSION['errorusuario']);
-    unset($_SESSION['exitocontraseña']);
-    unset($_SESSION['errorcontraseña']);
-    unset($_SESSION['exitonombre']);
-    unset($_SESSION['errornombre']);
-    unset($_SESSION['erroreliminar']);
-?>
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
-<!-- Actualizar página cuando haya mensaje de error o éxito, permitiendo de nuevo la introducción -->
-<?php if (!empty($exitousuario)  || !empty($errorusuario) || !empty($exitocontraseña) || !empty($errorcontraseña) || !empty($exitonombre) || !empty($errornombre)) {
-    if(!empty($exitousuario)  || !empty($errorusuario)) echo "<meta http-equiv='refresh' content='5;url=areapersonal.php#botonusuario'>";
-    if(!empty($exitocontraseña) || !empty($errorcontraseña)) echo "<meta http-equiv='refresh' content='5;url=areapersonal.php#botoncontraseña'>";
-    if(!empty($exitonombre) || !empty($errornombre)) echo "<meta http-equiv='refresh' content='5;url=areapersonal.php#botonnombre'>";
-    if(!empty($exitoeliminar)) echo "<meta http-equiv='refresh' content='5;url=inicio.php'>";
-    if(!empty($erroreliminar)) echo "<meta http-equiv='refresh' content='5;url=areapersonal.php#botoneliminar'>";
-    $deshabilitar = true;
+// Guardar mensajes de la sesión de forma local si tienen contenido, si no, la inicializa vacía
+$exitousuario = isset($_SESSION['exitousuario']) ? $_SESSION['exitousuario'] : "";
+$errorusuario = isset($_SESSION['errorusuario']) ? $_SESSION['errorusuario'] : "";
+$exitocontraseña = isset($_SESSION['exitocontraseña']) ? $_SESSION['exitocontraseña'] : "";
+$errorcontraseña = isset($_SESSION['errorcontraseña']) ? $_SESSION['errorcontraseña'] : "";
+$exitonombre = isset($_SESSION['exitonombre']) ? $_SESSION['exitonombre'] : "";
+$errornombre = isset($_SESSION['errornombre']) ? $_SESSION['errornombre'] : "";
+$erroreliminar = isset($_SESSION['erroreliminar']) ? $_SESSION['erroreliminar'] : "";
+$usuario = isset($_SESSION['usuario']['usuario']) ? $_SESSION['usuario']['usuario'] : "";
+$deshabilitar = false;
+
+// Vaciar datos de la sesion ya guardados de forma local
+unset($_SESSION['exitousuario']);
+unset($_SESSION['errorusuario']);
+unset($_SESSION['exitocontraseña']);
+unset($_SESSION['errorcontraseña']);
+unset($_SESSION['exitonombre']);
+unset($_SESSION['errornombre']);
+unset($_SESSION['erroreliminar']);
+
+if (!empty($exitousuario)  || !empty($errorusuario) || !empty($exitocontraseña) || !empty($errorcontraseña) || !empty($exitonombre) || !empty($errornombre)) {
+if(!empty($exitousuario)  || !empty($errorusuario)) echo "<meta http-equiv='refresh' content='5;url=areapersonal.php#botonusuario'>";
+if(!empty($exitocontraseña) || !empty($errorcontraseña)) echo "<meta http-equiv='refresh' content='5;url=areapersonal.php#botoncontraseña'>";
+if(!empty($exitonombre) || !empty($errornombre)) echo "<meta http-equiv='refresh' content='5;url=areapersonal.php#botonnombre'>";
+if(!empty($exitoeliminar)) echo "<meta http-equiv='refresh' content='5;url=inicio.php'>";
+if(!empty($erroreliminar)) echo "<meta http-equiv='refresh' content='5;url=areapersonal.php#botoneliminar'>";
+$deshabilitar = true;
 }?>
 
-<!-- Página Área Personal -->
 <html lang="es">
 <link rel="shortcut icon" href="<?=URL_Proyecto?>img/logo.ico" />
 <head>

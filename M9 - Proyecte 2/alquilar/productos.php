@@ -1,77 +1,78 @@
 <?php
-    require_once $_SERVER['DOCUMENT_ROOT'].'/M9/M9 - Proyecte 2/global.php';
+// Cargar ficheros requeridos
+require_once $_SERVER['DOCUMENT_ROOT'].'/M9/M9 - Proyecte 2/global.php';
 
-    // Iniciar sesión y eliminar modelo si existe
-    if (session_status() === PHP_SESSION_NONE) {
-        session_start();
-    }
-    // Resetear variable modelo
-    if (isset($_SESSION['modelo'])) {
-        unset($_SESSION['modelo']);
-    }
+// Iniciar sesión y eliminar modelo si existe
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+// Resetear variable modelo
+if (isset($_SESSION['modelo'])) {
+    unset($_SESSION['modelo']);
+}
 
-    // Reset variables
-    $deshabilitar = false;
-    $inventario = isset($_GET['inventario']) ? $_GET['inventario'] : false;
-    $no_sesion = isset($_SESSION['usuario']['usuario']) ? false : true;
-    $usuario = !$no_sesion ? $_SESSION['usuario']['usuario'] : '';
+// Reset variables
+$deshabilitar = false;
+$inventario = isset($_GET['inventario']) ? $_GET['inventario'] : false;
+$no_sesion = isset($_SESSION['usuario']['usuario']) ? false : true;
+$usuario = !$no_sesion ? $_SESSION['usuario']['usuario'] : '';
 
-    // Registrar localmente mensajes recibidos sesión
-    $exito_honda = isset($_SESSION['exito_honda']) ? $_SESSION['exito_honda'] : '';
-    $error_honda = isset($_SESSION['error_honda']) ? $_SESSION['error_honda'] : '';
-    $exito_bmw = isset($_SESSION['exito_bmw']) ? $_SESSION['exito_bmw'] : '';
-    $error_bmw = isset($_SESSION['error_bmw']) ? $_SESSION['error_bmw'] : '';
-    $exito_mb = isset($_SESSION['exito_mb']) ? $_SESSION['exito_mb'] : '';
-    $error_mb = isset($_SESSION['error_mb']) ? $_SESSION['error_mb'] : '';
-    $exito_evo = isset($_SESSION['exito_evo']) ? $_SESSION['exito_evo'] : '';
-    $error_evo = isset($_SESSION['error_evo']) ? $_SESSION['error_evo'] : '';
-    $exito_ibiza = isset($_SESSION['exito_ibiza']) ? $_SESSION['exito_ibiza'] : '';
-    $error_ibiza = isset($_SESSION['error_ibiza']) ? $_SESSION['error_ibiza'] : '';
+// Registrar localmente mensajes recibidos sesión
+$exito_honda = isset($_SESSION['exito_honda']) ? $_SESSION['exito_honda'] : '';
+$error_honda = isset($_SESSION['error_honda']) ? $_SESSION['error_honda'] : '';
+$exito_bmw = isset($_SESSION['exito_bmw']) ? $_SESSION['exito_bmw'] : '';
+$error_bmw = isset($_SESSION['error_bmw']) ? $_SESSION['error_bmw'] : '';
+$exito_mb = isset($_SESSION['exito_mb']) ? $_SESSION['exito_mb'] : '';
+$error_mb = isset($_SESSION['error_mb']) ? $_SESSION['error_mb'] : '';
+$exito_evo = isset($_SESSION['exito_evo']) ? $_SESSION['exito_evo'] : '';
+$error_evo = isset($_SESSION['error_evo']) ? $_SESSION['error_evo'] : '';
+$exito_ibiza = isset($_SESSION['exito_ibiza']) ? $_SESSION['exito_ibiza'] : '';
+$error_ibiza = isset($_SESSION['error_ibiza']) ? $_SESSION['error_ibiza'] : '';
 
 
-    // Borrar mensajes de sesión
-    unset($_SESSION['exito_honda']); unset($_SESSION['error_honda']);
-    unset($_SESSION['exito_bmw']); unset($_SESSION['error_bmw']);
-    unset($_SESSION['exito_mb']); unset($_SESSION['error_mb']);
-    unset($_SESSION['exito_evo']); unset($_SESSION['error_evo']);
-    unset($_SESSION['exito_ibiza']); unset($_SESSION['error_ibiza']);
+// Borrar mensajes de sesión
+unset($_SESSION['exito_honda']); unset($_SESSION['error_honda']);
+unset($_SESSION['exito_bmw']); unset($_SESSION['error_bmw']);
+unset($_SESSION['exito_mb']); unset($_SESSION['error_mb']);
+unset($_SESSION['exito_evo']); unset($_SESSION['error_evo']);
+unset($_SESSION['exito_ibiza']); unset($_SESSION['error_ibiza']);
 
-    // Si hay algún mensaje de error, deshabilitamos elementos
-    if (!empty($exito_honda) || !empty($error_honda) ||
-        !empty($exito_bmw) || !empty($error_bmw) ||
-        !empty($exito_mb) || !empty($error_mb) ||
-        !empty($exito_evo) || !empty($error_evo) ||
-        !empty($exito_ibiza) || !empty($error_ibiza))
-        $deshabilitar = true
-    ;
+// Si hay algún mensaje de error, deshabilitamos elementos
+if (!empty($exito_honda) || !empty($error_honda) ||
+    !empty($exito_bmw) || !empty($error_bmw) ||
+    !empty($exito_mb) || !empty($error_mb) ||
+    !empty($exito_evo) || !empty($error_evo) ||
+    !empty($exito_ibiza) || !empty($error_ibiza))
+    $deshabilitar = true
+;
 
-    // Si se accede en modo inventario sin ser admin, rechazamos acceso
-    if($inventario && $usuario <> 'admin') {
-        $_SESSION['errorsesion'] = "Debes iniciar sesión de como administrador para poder gestionar los inventarios.";
-        header("Location: ".URL_Proyecto.'index.php');
-        exit();
-    }
+// Si se accede en modo inventario sin ser admin, rechazamos acceso
+if($inventario && $usuario <> 'admin') {
+    $_SESSION['errorsesion'] = "Debes iniciar sesión de como administrador para poder gestionar los inventarios.";
+    header("Location: ".URL_Proyecto.'index.php');
+    exit();
+}
 
-    // Obtener datos coches registrados
-    include($_SERVER['DOCUMENT_ROOT'].URL_Proyecto."alquilar/funciones/obtenercoches.php");
+// Obtener datos coches registrados
+include($_SERVER['DOCUMENT_ROOT'].URL_Proyecto."alquilar/funciones/obtenercoches.php");
 
-    // Si mensaje error guardar local y refrescar 5s
-    if (isset($_SESSION['mensaje_producto_error']) || isset($_SESSION['mensaje_coches_error'])) {
-        $error .= !empty($_SESSION['mensaje_producto_error']).!empty($_SESSION['mensaje_coches_error']);
-        if (isset($_SESSION['mensaje_producto_error'])) unset($_SESSION['mensaje_producto_error']);
-        if (isset($_SESSION['mensaje_coches_error'])) unset($_SESSION['mensaje_coches_error']);
-        header("Refresh: 5; url=".URL_Proyecto."alquilar/productos.php");
-    }
-    
-    // Registrar localmente cantidades coches
-    $cantidad_honda = isset($_SESSION['coches']['HONDAS2000']['cantidad']) ? $_SESSION['coches']['HONDAS2000']['cantidad'] : "0";
-    $cantidad_bmw = isset($_SESSION['coches']['BMWM3E30']['cantidad']) ? $_SESSION['coches']['BMWM3E30']['cantidad'] : "0";
-    $cantidad_mb = isset($_SESSION['coches']['MBW201AMG190EDCM']['cantidad']) ? $_SESSION['coches']['MBW201AMG190EDCM']['cantidad'] : "0";
-    $cantidad_evo = isset($_SESSION['coches']['EVO9']['cantidad']) ? $_SESSION['coches']['EVO9']['cantidad'] : "0";
-    $cantidad_ibiza = isset($_SESSION['coches']['CUPRA6L']['cantidad']) ? $_SESSION['coches']['CUPRA6L']['cantidad'] : "0";
-    
-    // Si hay error o no hay sesión, deshabilitar botones
-    if($no_sesion || !empty($error)) $deshabilitar = true;
+// Si mensaje error guardar local y refrescar 5s
+if (isset($_SESSION['mensaje_producto_error']) || isset($_SESSION['mensaje_coches_error'])) {
+    $error .= !empty($_SESSION['mensaje_producto_error']).!empty($_SESSION['mensaje_coches_error']);
+    if (isset($_SESSION['mensaje_producto_error'])) unset($_SESSION['mensaje_producto_error']);
+    if (isset($_SESSION['mensaje_coches_error'])) unset($_SESSION['mensaje_coches_error']);
+    header("Refresh: 5; url=".URL_Proyecto."alquilar/productos.php");
+}
+
+// Registrar localmente cantidades coches
+$cantidad_honda = isset($_SESSION['coches']['HONDAS2000']['cantidad']) ? $_SESSION['coches']['HONDAS2000']['cantidad'] : "0";
+$cantidad_bmw = isset($_SESSION['coches']['BMWM3E30']['cantidad']) ? $_SESSION['coches']['BMWM3E30']['cantidad'] : "0";
+$cantidad_mb = isset($_SESSION['coches']['MBW201AMG190EDCM']['cantidad']) ? $_SESSION['coches']['MBW201AMG190EDCM']['cantidad'] : "0";
+$cantidad_evo = isset($_SESSION['coches']['EVO9']['cantidad']) ? $_SESSION['coches']['EVO9']['cantidad'] : "0";
+$cantidad_ibiza = isset($_SESSION['coches']['CUPRA6L']['cantidad']) ? $_SESSION['coches']['CUPRA6L']['cantidad'] : "0";
+
+// Si hay error o no hay sesión, deshabilitar botones
+if($no_sesion || !empty($error)) $deshabilitar = true;
 ?>
 
 <html lang="es">

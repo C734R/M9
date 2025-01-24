@@ -1,11 +1,15 @@
 <?php
-    require_once $_SERVER['DOCUMENT_ROOT'].'/M9/M9 - Proyecte 2/global.php';
-    require_once $_SERVER['DOCUMENT_ROOT'].URL_Proyecto.'sesion/funciones_sesion/checkusuario.php';
+// Cargar archivos necesarios
+require_once $_SERVER['DOCUMENT_ROOT'].'/M9/M9 - Proyecte 2/global.php';
+require_once $_SERVER['DOCUMENT_ROOT'].URL_Proyecto.'sesion/funciones_sesion/checkusuario.php';
 
-    $mensaje_cabecera = isset($_SESSION['mensaje_cabecera']) ? $_SESSION['mensaje_cabecera'] : "";
-    unset($_SESSION['mensaje_cabecera']);    
-    $error_cabecera = isset($_SESSION['error_cabecera']) ? $_SESSION['error_cabecera'] : "";
-    unset($_SESSION['error_cabecera']);
+// Volcar mensajes de sesión
+$mensaje_cabecera = isset($_SESSION['mensaje_cabecera']) ? $_SESSION['mensaje_cabecera'] : "";
+$error_cabecera = isset($_SESSION['error_cabecera']) ? $_SESSION['error_cabecera'] : "";
+
+// Vaciar mensajes de sesión
+unset($_SESSION['mensaje_cabecera']);    
+unset($_SESSION['error_cabecera']);
 ?>
 
 <!-- Estilos de la cabecera -->

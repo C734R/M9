@@ -10,7 +10,7 @@
 
 /* Columna del 20% izq */
 .columna-20-izq {
-    margin-left: 10%;
+    margin-left: 10%;                   /* Margen izquierdo */
     width: 50%;                         /* Ancho del contenido */
     display: flex;                      /* Modelo de caja flexible */
     align-items: center;                /* Centra verticalmente los objetos */
@@ -85,27 +85,30 @@ header nav ul li a:hover {
 
 /* Columna del 20% der*/
 .columna-20-der {
-    margin-left: 10%;
-    margin-right: 10%;
-    width: 100%;                         /* Ancho del contenido */
+    margin-left: 10%;                   /* Margen izquierdo */
+    margin-right: 10%;                  /* Margen derecho */
+    width: 100%;                        /* Ancho del contenido */
     display: flex;                      /* Modelo de caja flexible */
     align-items: center;                /* Centra verticalmente los objetos */
     justify-content: center;            /* Centra horizontalmente el contenido */
 }
 
+/* Div botones sesion */
 .botones-sesion {
-    margin-left: 10px;                   /* Espaciado a la izquierda */
-    margin-right: 10px;                  /* Espaciado a la derecha */
+    margin-left: 10px;                   /* Margen izquierdo */
+    margin-right: 10px;                  /* Margen derecho */
 }
 
+/* Botones sesion */
 .botones-sesion a{
-    align-items: center;                /* Centrado vertical */
-    justify-content: center;            /* Centrado horizontal */
+    align-items: center;                 /* Centrado vertical */
+    justify-content: center;             /* Centrado horizontal */
     color: white;                      /* Color del texto */
     text-decoration: none;               /* Sin subrayado */
     font-weight: bold;                   /* Texto en negrita */
 }
 
+/* Efecto en los botones */
 .botones-sesion a:hover {
     text-decoration: underline;           /* Subrayado al pasar el ratón */
 }

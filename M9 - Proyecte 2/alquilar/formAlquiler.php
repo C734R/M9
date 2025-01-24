@@ -1,33 +1,34 @@
 <?php
-    require_once $_SERVER['DOCUMENT_ROOT'].'/M9/M9 - Proyecte 2/global.php';
+// Cargar ficheros requeridos
+require_once $_SERVER['DOCUMENT_ROOT'].'/M9/M9 - Proyecte 2/global.php';
 
-    // Iniciar sesión si no está iniciada
-    if (session_status() === PHP_SESSION_NONE) {
-        session_start();
-    }
-    
-    //$_SESSION['modelo'] = isset($_POST['modelo']) ? $_POST['modelo']: $_SESSION['modelo'];
+// Iniciar sesión si no está iniciada
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
-    // Si no se ha registrado modelo, volver a la página de vehículos.
-    if (!isset($_POST['modelo']) && !isset($_SESSION['modelo'])) {
-        $_SESSION['mensaje_producto_error'] = "Error. No se ha seleccionado ningún producto.";
-        header("Location: ".URL_Proyecto."alquilar/productos.php");
-        exit();
-    }
+//$_SESSION['modelo'] = isset($_POST['modelo']) ? $_POST['modelo']: $_SESSION['modelo'];
 
-    // Registrar modelo en sesion
-    $_SESSION['modelo'] = isset($_POST['modelo']) ? $_POST['modelo']: $_SESSION['modelo'];
+// Si no se ha registrado modelo, volver a la página de vehículos.
+if (!isset($_POST['modelo']) && !isset($_SESSION['modelo'])) {
+    $_SESSION['mensaje_producto_error'] = "Error. No se ha seleccionado ningún producto.";
+    header("Location: ".URL_Proyecto."alquilar/productos.php");
+    exit();
+}
 
-    // Registrar localmente precio modelo
-    $precio = $_SESSION['coches'][$_SESSION['modelo']]['precio'];
+// Registrar modelo en sesion
+$_SESSION['modelo'] = isset($_POST['modelo']) ? $_POST['modelo']: $_SESSION['modelo'];
 
-    // Registrar localmente días post propio formulario
-    $dias = isset($_POST['_dias']) ? $_POST['_dias'] : '';
-    $piloto = isset($_SESSION['usuario']['usuario']) ? $_SESSION['usuario']['usuario'] : '';
-    $nombre_completo = isset($_SESSION['usuario']['usuario']) ? $_SESSION['usuario']['nombre']." ".$_SESSION['usuario']['apellido1']." ". $_SESSION['usuario']['apellido2'] : '' ;
-    
-    // Calcular precio al modificar formulario
-    $precio_total = isset($_POST['_dias']) ? ($_POST['_dias'] * $precio) : 0.0;
+// Registrar localmente precio modelo
+$precio = $_SESSION['coches'][$_SESSION['modelo']]['precio'];
+
+// Registrar localmente días post propio formulario
+$dias = isset($_POST['_dias']) ? $_POST['_dias'] : '';
+$piloto = isset($_SESSION['usuario']['usuario']) ? $_SESSION['usuario']['usuario'] : '';
+$nombre_completo = isset($_SESSION['usuario']['usuario']) ? $_SESSION['usuario']['nombre']." ".$_SESSION['usuario']['apellido1']." ". $_SESSION['usuario']['apellido2'] : '' ;
+
+// Calcular precio al modificar formulario
+$precio_total = isset($_POST['_dias']) ? ($_POST['_dias'] * $precio) : 0.0;
 
 ?>
 

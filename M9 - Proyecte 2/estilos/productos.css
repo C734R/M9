@@ -1,6 +1,6 @@
 /* Título de cada coche */
 .titulocoche {
-    margin: 0% 5% 0% 5%;
+    margin: 0% 5% 0% 5%;                /* Márgenes */
     background-color: #363636;        /* Color de fondo del título */
     border: 1px solid #ddd;           /* Borde del título */
     font-size: 30px;                    /* Tamaño del texto */
@@ -13,8 +13,8 @@
 
 /* Contenedor de cada coche */
 .coche {
-    width: auto;                        /* Proporción de ancho */
-    margin: 0% 5% 0% 5%;
+    width: auto;                            /* Proporción de ancho */
+    margin: 0% 5% 0% 5%;                    /* Márgenes */
     background-color: #363636;            /* Color de fondo */
     border: 1px solid #ddd;               /* Borde */
     display: grid;                          /* Diseño basado en cuadrícula */

@@ -1,23 +1,28 @@
 <?php
-    require_once $_SERVER['DOCUMENT_ROOT'].'/M9/M9 - Proyecte 2/global.php';
-    // Iniciar la sesión si no está ya iniciada
-    if (session_status() === PHP_SESSION_NONE) {
-        session_start();
-    }
-    
-    $mensaje = isset($_SESSION['mensajesesion']) ? $_SESSION['mensajesesion'] : "";
-    $error = isset($_SESSION['errorsesion']) ? $_SESSION['errorsesion'] : "";
-    
-    unset($_SESSION['mensajesesion']);    
-    unset($_SESSION['errorsesion']);
+// Cargar archivos necesarios
+require_once $_SERVER['DOCUMENT_ROOT'].'/M9/M9 - Proyecte 2/global.php';
 
-    $deshabilitar = !empty($error) ? true : false;
+// Iniciar la sesión si no está ya iniciada
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
-    // Actualizar página cuando haya mensaje de error o éxito, permitiendo de nuevo la introducción
-    if (!empty($error)  || !empty($mensaje)) {
-        $deshabilitar = true;
-        echo "<meta http-equiv='refresh' content='5;url=index.php'>";
-    }
+// Volcar mensajes de sesión en variables locales
+$mensaje = isset($_SESSION['mensajesesion']) ? $_SESSION['mensajesesion'] : "";
+$error = isset($_SESSION['errorsesion']) ? $_SESSION['errorsesion'] : "";
+
+// Resetear mensajes de la sesión
+unset($_SESSION['mensajesesion']);    
+unset($_SESSION['errorsesion']);
+
+// Si hay error se deshabilitan elementos
+$deshabilitar = !empty($error) ? true : false;
+
+// Actualizar página cuando haya mensaje de error o éxito, permitiendo de nuevo la introducción
+if (!empty($error)  || !empty($mensaje)) {
+    $deshabilitar = true;
+    echo "<meta http-equiv='refresh' content='5;url=index.php'>";
+}
 ?>
 
 <html lang="es">

@@ -1,4 +1,5 @@
 <?php
+// Cargar ficheros requeridos
 require_once $_SERVER['DOCUMENT_ROOT'].'/M9/M9 - Proyecte 2/global.php';
 
 if (session_status() === PHP_SESSION_NONE) {
