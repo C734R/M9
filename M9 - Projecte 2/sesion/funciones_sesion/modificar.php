@@ -3,13 +3,13 @@
 require_once $_SERVER['DOCUMENT_ROOT'].'/M9/M9 - Projecte 2/global.php';
 require_once $_SERVER['DOCUMENT_ROOT'].URL_Proyecto.'BBDD/funcionesSQL.php';
 
+// Checkear si hay sesion abierta
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 // Si la solicitud HTTP es tipo 'POST'
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Checkear si hay sesion abierta
-    if (session_status() === PHP_SESSION_NONE) {
-        session_start();
-    }
 
     // Definimos variables globales en la sesión
     $_SESSION['exitousuario'] = "";
