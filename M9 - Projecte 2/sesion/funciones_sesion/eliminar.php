@@ -32,14 +32,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$admin) {
     // Si no, indicamos
     else  $_SESSION['erroreliminar'] = "Error. No se ha podido eliminar el usuario.";
 }
-elseif ($admin) $_SESSION['erroreliminar'] = "Error. No se puede eliminar el usuario administrador.";
+elseif ($admin) $_SESSION['erroreliminar'] = "Error. No se puede eliminar el usuario administrador. Contacta con el gestor de BBDD. Espera...";
 
 // Si se produce error volvemos a área personal al espacio de eliminar usuario
 if(!empty($_SESSION['erroreliminar'])) {
     echo "<meta http-equiv='refresh' content='0;url=".URL_Proyecto."sesion/areapersonal.php#botoneliminar'>";
+}
+// En cualquier otro caso, volvemos a áreapersonal
+else {
+    header("Location: ".URL_Proyecto."sesion/areapersonal.php");
     exit();
 }
-
-// En cualquier otro caso, volvemos a áreapersonal
-header("Location: ".URL_Proyecto."sesion/areapersonal.php");
 ?>
