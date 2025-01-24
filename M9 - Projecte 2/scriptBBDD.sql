@@ -1,7 +1,11 @@
+-- Eliminar si ya existe y crear si no existe. Aseguramos evitar errores en la consulta
 DROP DATABASE IF EXISTS m9uf1;
 CREATE DATABASE IF NOT EXISTS m9uf1;
+
+-- Definimos el esquema a utilizar
 USE m9uf1;
 
+-- Creamos tabla de usuarios con los datos necesarios
 CREATE TABLE usuarios (
     usuario VARCHAR(100) NOT NULL PRIMARY KEY UNIQUE,
     password VARCHAR(256) NOT NULL,
@@ -10,6 +14,7 @@ CREATE TABLE usuarios (
     apellido2 VARCHAR(100) NOT NULL
 );
 
+-- Creamos tabla de coches con los datos necesarios
 CREATE TABLE coches (
     id_coche INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     modelo VARCHAR(100) NOT NULL,
@@ -17,6 +22,7 @@ CREATE TABLE coches (
     precio FLOAT NOT NULL
 );
 
+-- Creamos tabla de alquileres con los datos necesarios y asociando a usuarios y coches con claves foráneas
 CREATE TABLE alquileres (
     id_alquiler INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     coche INT NOT NULL,
@@ -31,9 +37,11 @@ CREATE TABLE alquileres (
         ON DELETE RESTRICT
 );
 
+-- Definimos usuario administrador de la web
 INSERT INTO usuarios(usuario,password,nombre,apellido1,apellido2)
     VALUES ('admin', '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4' , 'super', 'mega', 'admin');
 
+-- Introducimos los datos básicos de los modelos de coche de la web
 INSERT INTO coches(modelo,cantidad,precio)
     VALUES ('HONDAS2000', 3 , 250.0);
 

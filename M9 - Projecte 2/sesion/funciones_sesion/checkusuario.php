@@ -34,5 +34,4 @@ elseif (!empty($pass) && $resultado->num_rows > 0) {
         header("Location: ".URL_Proyecto."index.php");
     }
 }
-
 ?>

@@ -86,7 +86,6 @@ if(!empty($exitousuario)  || !empty($errorusuario) || !empty($exitocontraseña) 
             <div><h2>Modificar contraseña</h2></div>
             <form action="<?=URL_Proyecto?>sesion/funciones_sesion/modificar.php" method="POST">
                 <div><h3>Introduce la contraseña actual y nueva del usuario</h3></div>
-                <input type="hidden" id="usuario" name="usuario" value="<?php echo "$usuario" ?>" disabled>
                 <div>
                     <label for="password">Contraseña actual:</label>
                     <input type="password" id="password" name="password" required <?php if ($deshabilitar) echo "disabled" ?>>
@@ -120,7 +119,6 @@ if(!empty($exitousuario)  || !empty($errorusuario) || !empty($exitocontraseña) 
             <div><h2>Modificar nombre y apellidos</h2></div>
             <form action="<?=URL_Proyecto?>sesion/funciones_sesion/modificar.php" method="POST">
                 <div><h3>Introduce los nuevos datos del usuario</h3></div>
-                <input type="hidden" id="usuario" name="usuario" value="<?php echo "$usuario" ?>" disabled>
                 <div>
                     <label for="nombrecomleto">Nombre completo actual:</label>
                     <input type="text" id="nombrecomleto" name="nombrecomleto" placeholder="<?php echo "$nombre,"." $apellido1"." $apellido2" ?>" disabled></div>
