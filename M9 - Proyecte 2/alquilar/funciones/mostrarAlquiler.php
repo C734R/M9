@@ -14,6 +14,7 @@
                 <p>Modelo: <?php echo htmlspecialchars($alquiler['modelo']); ?></p>
                 <p>Días alquilado: <?php echo htmlspecialchars($alquiler['dias']); ?></p>
                 <p>Piloto: <?php echo htmlspecialchars($alquiler['piloto']); ?></p>
+                <p>Precio total: <?php echo htmlspecialchars($alquiler['precio_total']); ?></p>
             </div>
         <?php endforeach; ?>
     <!-- Si no hay registros aún -->
